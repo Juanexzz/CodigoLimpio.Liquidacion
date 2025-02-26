@@ -12,6 +12,9 @@ class TestContractDetails(unittest.TestCase):
         fecha_fin = "30/06/2024"
         salario_auxilio = 1462000
         salario_sin_auxilio = 1300000
+        dias_suspension = 0
+        dias_indemnizacion =0
+        salario_variable = 0
 
         #resultado esperado
         prima = 609167.00
@@ -43,6 +46,9 @@ class TestContractDetails(unittest.TestCase):
         fecha_fin = "20/12/2024"
         salario_auxilio = 1662000
         salario_sin_auxilio = 1500000
+        dias_suspension = 0
+        dias_indemnizacion =0
+        salario_variable = 0
 
         #resultado esperado
         prima =  784333
@@ -73,6 +79,9 @@ class TestContractDetails(unittest.TestCase):
         fecha_fin = "30/10/2024"
         salario_auxilio =  3662000 
         salario_sin_auxilio = 3500000
+        dias_suspension = 0
+        dias_indemnizacion =0
+        salario_variable = 0
 
         #resultado esperado
         prima = 1223445
