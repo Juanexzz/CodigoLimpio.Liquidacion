@@ -24,28 +24,28 @@ Un sistema para calcular la liquidación laboral de empleados según la normativ
 ## 📦 Instalación
 
 1. Clona el repositorio
-	git clone https://github.com/Emblask/CodigoLimpio.Liquidacion.git
+	git clone ```https://github.com/Emblask/CodigoLimpio.Liquidacion.git```
    
 2. Requisitos:
         Python 3.8+
         
 ## 🛠️ Uso
-1. Ejecutar tests
-	python -m unittest test/test_logic.py
+1. Ejecutar tests python -m unittest test/test_logic.py
 2. Ejecutar codigo
 	
 ## 🗂️ Estructura del Proyecto
-.
+```
 └── src/
     ├── model/
     │   └── liquidacion_total.py  # Lógica principal
     ├── tests/
     │   └── test_liquidacion.py   # Pruebas unitarias
     └── README.md                 # Documentación
-    
-"" 📄 Licencia
+```
 
-MIT License - Ver LICENSE para más detalles.
+## 📄 Licencia
+
+MIT License
 
 ## 👥 Contribuidores
 
