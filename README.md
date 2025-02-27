@@ -37,15 +37,16 @@ Un sistema para calcular la liquidación laboral de empleados según la normativ
 ## 🗂️ Estructura del Proyecto
 .
 └── src/
+
     ├── model/
     │   └── liquidacion_total.py  # Lógica principal
     ├── tests/
     │   └── test_liquidacion.py   # Pruebas unitarias
     └── README.md                 # Documentación
     
-"" 📄 Licencia
+## 📄 Licencia
 
-MIT License - Ver LICENSE para más detalles.
+MIT License
 
 ## 👥 Contribuidores
 
