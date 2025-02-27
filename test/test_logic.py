@@ -6,37 +6,38 @@ from model.liquidacion_total import LiquidacionEmpleado as Liquidacion
 class TestContractDetails(unittest.TestCase):
 
     def test_normal_1(self):
-        
-        #variables de entrada 
+        # Variables de entrada
         fecha_inicio = "01/02/2024"
         fecha_fin = "30/06/2024"
         salario_auxilio = 1462000
         salario_sin_auxilio = 1300000
         dias_suspension = 0
-        dias_indemnizacion =0
+        dias_indemnizacion = 0
         salario_variable = 0
 
-        #resultado esperado
-        prima = 609167.00
-        vacaciones = 270833.00
-        cesantias = 609167.00
-        intereses_cesantias = 30458.00
-        liquidacion_total = 1519625.00
+        # Resultado esperado (corregido)
+        prima = 609167
+        vacaciones = 270833
+        cesantias = 609167
+        intereses_cesantias = 30458
+        liquidacion_total = 1519625
 
-        #proceso
-        prima_resultados = Liquidacion.calcular_prima(salario_auxilio, salario_sin_auxilio, salario_variable, fecha_inicio, fecha_fin, dias_suspension, dias_indemnizacion)
-        vacaciones_resultados = Liquidacion.calcular_vacaciones(salario_auxilio, salario_sin_auxilio, salario_variable, fecha_inicio, fecha_fin, dias_suspension, dias_indemnizacion)
-        cesantias_resultados = Liquidacion.calcular_cesantias(salario_auxilio, salario_sin_auxilio, salario_variable, fecha_inicio, fecha_fin, dias_suspension, dias_indemnizacion)
-        intereses_cesantias_resultados = Liquidacion.calcular_intereses_cesantias(salario_auxilio, salario_sin_auxilio, salario_variable, fecha_inicio, fecha_fin, dias_suspension, dias_indemnizacion)
-        liquidacion_total_resultados = Liquidacion.calcular_liquidacion_total(salario_auxilio, salario_sin_auxilio, salario_variable, fecha_inicio, fecha_fin, dias_suspension, dias_indemnizacion)
-        
+        # Proceso
+        Mi_liquidacion = Liquidacion(salario_auxilio, salario_sin_auxilio, salario_variable, fecha_inicio, fecha_fin, dias_suspension, dias_indemnizacion)
+        prima_resultados = Mi_liquidacion.calcular_prima()
+        vacaciones_resultados = Mi_liquidacion.calcular_vacaciones()
+        cesantias_resultados = Mi_liquidacion.calcular_cesantias()
+        intereses_cesantias_resultados = Mi_liquidacion.calcular_intereses_cesantias()
+        liquidacion_total_resultados = Mi_liquidacion.calcular_liquidacion_total()
 
-        #verificación
+        # Verificación
         self.assertEqual(prima, prima_resultados)
         self.assertEqual(vacaciones, vacaciones_resultados)
         self.assertEqual(cesantias, cesantias_resultados)
         self.assertEqual(intereses_cesantias, intereses_cesantias_resultados)
         self.assertEqual(liquidacion_total, liquidacion_total_resultados)
+
+    # Resto de las pruebas...
 
     
     def test_normal_2(self):
@@ -58,11 +59,12 @@ class TestContractDetails(unittest.TestCase):
         liquidacion_total = 3585347
 
         #proceso
-        prima_resultados = Liquidacion.calcular_prima(salario_auxilio, salario_sin_auxilio, salario_variable, fecha_inicio, fecha_fin, dias_suspension, dias_indemnizacion)
-        vacaciones_resultados = Liquidacion.calcular_vacaciones(salario_auxilio, salario_sin_auxilio, salario_variable, fecha_inicio, fecha_fin, dias_suspension, dias_indemnizacion)
-        cesantias_resultados = Liquidacion.calcular_cesantias(salario_auxilio, salario_sin_auxilio, salario_variable, fecha_inicio, fecha_fin, dias_suspension, dias_indemnizacion)
-        intereses_cesantias_resultados = Liquidacion.calcular_intereses_cesantias(salario_auxilio, salario_sin_auxilio, salario_variable, fecha_inicio, fecha_fin, dias_suspension, dias_indemnizacion)
-        liquidacion_total_resultados = Liquidacion.calcular_liquidacion_total(salario_auxilio, salario_sin_auxilio, salario_variable, fecha_inicio, fecha_fin, dias_suspension, dias_indemnizacion)
+        Mi_liquidacion = Liquidacion(salario_auxilio, salario_sin_auxilio, salario_variable, fecha_inicio, fecha_fin, dias_suspension, dias_indemnizacion)
+        prima_resultados = Mi_liquidacion.calcular_prima()
+        vacaciones_resultados = Mi_liquidacion.calcular_vacaciones()
+        cesantias_resultados = Mi_liquidacion.calcular_cesantias()
+        intereses_cesantias_resultados = Mi_liquidacion.calcular_intereses_cesantias()
+        liquidacion_total_resultados = Mi_liquidacion.calcular_liquidacion_total()
         
 
         #verificación
@@ -91,11 +93,12 @@ class TestContractDetails(unittest.TestCase):
         liquidacion_total = 3077708  
 
         #proceso
-        prima_resultados = Liquidacion.calcular_prima(salario_auxilio, salario_sin_auxilio, salario_variable, fecha_inicio, fecha_fin, dias_suspension, dias_indemnizacion)
-        vacaciones_resultados = Liquidacion.calcular_vacaciones(salario_auxilio, salario_sin_auxilio, salario_variable, fecha_inicio, fecha_fin, dias_suspension, dias_indemnizacion)
-        cesantias_resultados = Liquidacion.calcular_cesantias(salario_auxilio, salario_sin_auxilio, salario_variable, fecha_inicio, fecha_fin, dias_suspension, dias_indemnizacion)
-        intereses_cesantias_resultados = Liquidacion.calcular_intereses_cesantias(salario_auxilio, salario_sin_auxilio, salario_variable, fecha_inicio, fecha_fin, dias_suspension, dias_indemnizacion)
-        liquidacion_total_resultados = Liquidacion.calcular_liquidacion_total(salario_auxilio, salario_sin_auxilio, salario_variable, fecha_inicio, fecha_fin, dias_suspension, dias_indemnizacion)
+        Mi_liquidacion = Liquidacion(salario_auxilio, salario_sin_auxilio, salario_variable, fecha_inicio, fecha_fin, dias_suspension, dias_indemnizacion)
+        prima_resultados = Mi_liquidacion.calcular_prima()
+        vacaciones_resultados = Mi_liquidacion.calcular_vacaciones()
+        cesantias_resultados = Mi_liquidacion.calcular_cesantias()
+        intereses_cesantias_resultados = Mi_liquidacion.calcular_intereses_cesantias()
+        liquidacion_total_resultados = Mi_liquidacion.calcular_liquidacion_total()
         
 
         #verificación
@@ -125,11 +128,12 @@ class TestContractDetails(unittest.TestCase):
           
 
         #proceso
-        prima_resultados = Liquidacion.calcular_prima(salario_auxilio, salario_sin_auxilio, salario_variable, fecha_inicio, fecha_fin, dias_suspension, dias_indemnizacion)
-        vacaciones_resultados = Liquidacion.calcular_vacaciones(salario_auxilio, salario_sin_auxilio, salario_variable, fecha_inicio, fecha_fin, dias_suspension, dias_indemnizacion)
-        cesantias_resultados = Liquidacion.calcular_cesantias(salario_auxilio, salario_sin_auxilio, salario_variable, fecha_inicio, fecha_fin, dias_suspension, dias_indemnizacion)
-        intereses_cesantias_resultados = Liquidacion.calcular_intereses_cesantias(salario_auxilio, salario_sin_auxilio, salario_variable, fecha_inicio, fecha_fin, dias_suspension, dias_indemnizacion)
-        liquidacion_total_resultados = Liquidacion.calcular_liquidacion_total(salario_auxilio, salario_sin_auxilio, salario_variable, fecha_inicio, fecha_fin, dias_suspension, dias_indemnizacion)
+        Mi_liquidacion = Liquidacion(salario_auxilio, salario_sin_auxilio, salario_variable, fecha_inicio, fecha_fin, dias_suspension, dias_indemnizacion)
+        prima_resultados = Mi_liquidacion.calcular_prima()
+        vacaciones_resultados = Mi_liquidacion.calcular_vacaciones()
+        cesantias_resultados = Mi_liquidacion.calcular_cesantias()
+        intereses_cesantias_resultados = Mi_liquidacion.calcular_intereses_cesantias()
+        liquidacion_total_resultados = Mi_liquidacion.calcular_liquidacion_total()
         
 
         #verificación
@@ -158,11 +162,12 @@ class TestContractDetails(unittest.TestCase):
         liquidacion_total = 2420104 
 
         #proceso
-        prima_resultados = Liquidacion.calcular_prima(salario_auxilio, salario_sin_auxilio, salario_variable, fecha_inicio, fecha_fin, dias_suspension, dias_indemnizacion)
-        vacaciones_resultados = Liquidacion.calcular_vacaciones(salario_auxilio, salario_sin_auxilio, salario_variable, fecha_inicio, fecha_fin, dias_suspension, dias_indemnizacion)
-        cesantias_resultados = Liquidacion.calcular_cesantias(salario_auxilio, salario_sin_auxilio, salario_variable, fecha_inicio, fecha_fin, dias_suspension, dias_indemnizacion)
-        intereses_cesantias_resultados = Liquidacion.calcular_intereses_cesantias(salario_auxilio, salario_sin_auxilio, salario_variable, fecha_inicio, fecha_fin, dias_suspension, dias_indemnizacion)
-        liquidacion_total_resultados = Liquidacion.calcular_liquidacion_total(salario_auxilio, salario_sin_auxilio, salario_variable, fecha_inicio, fecha_fin, dias_suspension, dias_indemnizacion)
+        Mi_liquidacion = Liquidacion(salario_auxilio, salario_sin_auxilio, salario_variable, fecha_inicio, fecha_fin, dias_suspension, dias_indemnizacion)
+        prima_resultados = Mi_liquidacion.calcular_prima()
+        vacaciones_resultados = Mi_liquidacion.calcular_vacaciones()
+        cesantias_resultados = Mi_liquidacion.calcular_cesantias()
+        intereses_cesantias_resultados = Mi_liquidacion.calcular_intereses_cesantias()
+        liquidacion_total_resultados = Mi_liquidacion.calcular_liquidacion_total()
         
 
         #verificación
@@ -191,11 +196,12 @@ class TestContractDetails(unittest.TestCase):
         liquidacion_total = 3397114 
 
         #proceso
-        prima_resultados = Liquidacion.calcular_prima(salario_auxilio, salario_sin_auxilio, salario_variable, fecha_inicio, fecha_fin, dias_suspension, dias_indemnizacion)
-        vacaciones_resultados = Liquidacion.calcular_vacaciones(salario_auxilio, salario_sin_auxilio, salario_variable, fecha_inicio, fecha_fin, dias_suspension, dias_indemnizacion)
-        cesantias_resultados = Liquidacion.calcular_cesantias(salario_auxilio, salario_sin_auxilio, salario_variable, fecha_inicio, fecha_fin, dias_suspension, dias_indemnizacion)
-        intereses_cesantias_resultados = Liquidacion.calcular_intereses_cesantias(salario_auxilio, salario_sin_auxilio, salario_variable, fecha_inicio, fecha_fin, dias_suspension, dias_indemnizacion)
-        liquidacion_total_resultados = Liquidacion.calcular_liquidacion_total(salario_auxilio, salario_sin_auxilio, salario_variable, fecha_inicio, fecha_fin, dias_suspension, dias_indemnizacion)
+        Mi_liquidacion = Liquidacion(salario_auxilio, salario_sin_auxilio, salario_variable, fecha_inicio, fecha_fin, dias_suspension, dias_indemnizacion)
+        prima_resultados = Mi_liquidacion.calcular_prima()
+        vacaciones_resultados = Mi_liquidacion.calcular_vacaciones()
+        cesantias_resultados = Mi_liquidacion.calcular_cesantias()
+        intereses_cesantias_resultados = Mi_liquidacion.calcular_intereses_cesantias()
+        liquidacion_total_resultados = Mi_liquidacion.calcular_liquidacion_total()
         
 
         #verificación

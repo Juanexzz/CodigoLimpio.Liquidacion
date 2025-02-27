@@ -6,7 +6,7 @@ class LiquidacionEmpleado:
         self.salario_sin_auxilio = salario_sin_auxilio
         self.fecha_inicio = datetime.strptime(fecha_inicio, "%d/%m/%Y")
         self.fecha_fin = datetime.strptime(fecha_fin, "%d/%m/%Y")
-        self.dias_trabajados = (self.fecha_fin - self.fecha_inicio).days - dias_suspension  # Se restan días de suspensión
+        self.dias_trabajados = max((self.fecha_fin - self.fecha_inicio).days - dias_suspension, 0)  # Se restan días de suspensión
         self.salario_diario = salario_sin_auxilio / 30
         self.dias_indemnizacion = dias_indemnizacion
 
@@ -22,7 +22,7 @@ class LiquidacionEmpleado:
 
     def calcular_vacaciones(self):
         dias_vacaciones = self.dias_trabajados * 15 / 360
-        return round((dias_vacaciones / 30) * self.salario_sin_auxilio, 0)
+        return round(dias_vacaciones * self.salario_diario, 0)
 
     def calcular_indemnizacion(self):
         return round(self.salario_sin_auxilio / 30 * self.dias_indemnizacion, 0)
