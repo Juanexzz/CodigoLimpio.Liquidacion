@@ -30,5 +30,5 @@ class LiquidacionEmpleado:
     def calcular_liquidacion_total(self):
         total = (self.calcular_prima() + self.calcular_cesantias() +
                  self.calcular_intereses_cesantias() + self.calcular_vacaciones() +
-                 self.calcular_indemnizacion())  # Se suma la indemnización
+                 self.calcular_indemnizacion()) 
         return round(total, 0)
