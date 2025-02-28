@@ -167,7 +167,7 @@ class TestLiquidacion(unittest.TestCase):
     def test_error_1(self):
         with self.assertRaises(ErrorLiquidacion) as context:
             Liquidacion(
-                salario_auxilio=100000,
+                salario_auxilio=1620000,
                 salario_sin_auxilio=1500000,
                 salario_variable=0,
                 fecha_inicio="2023/01/01",  # Formato incorrecto
@@ -175,47 +175,47 @@ class TestLiquidacion(unittest.TestCase):
                 dias_suspension=0,
                 dias_indemnizacion=0
             )
-        self.assertEqual(str(context.exception), "El formato de la fecha debe ser dd/mm/yyyy")
+        self.assertEqual(str(context.exception), "Error de formato. El formato de la fecha es incorrecto. debe ser dia/mes/año de la siguiente forma dd/mm/yyyy")
 
     def test_error_2(self):
         with self.assertRaises(ErrorLiquidacion) as context:
             Liquidacion(
-                salario_auxilio=100000,
-                salario_sin_auxilio=1500000,
+                salario_auxilio=1500000,
+                salario_sin_auxilio=1000000, #salario menor a 1'300.000
                 salario_variable=0,
-                fecha_inicio="01/02/2023",  # Fecha de inicio posterior
-                fecha_fin="01/01/2023",
+                fecha_inicio="01/01/2023",
+                fecha_fin="01/02/2023",
                 dias_suspension=0,
                 dias_indemnizacion=0
             )
-        self.assertEqual(str(context.exception), "La fecha de inicio no puede ser posterior a la fecha de fin")
+        self.assertEqual(str(context.exception), "Salario incorrecto. El salario sin auxilio debe ser mayor o igual a 1,300,000, por favor ingrese un salario igual o mayor")
 
     def test_error_3(self):
         with self.assertRaises(ErrorLiquidacion) as context:
             Liquidacion(
-                salario_auxilio=100000,
-                salario_sin_auxilio=1500000,
+                salario_auxilio= 1462000,
+                salario_sin_auxilio= 1300000,
                 salario_variable=-50000,  # Salario variable negativo
                 fecha_inicio="01/01/2023",
                 fecha_fin="01/02/2023",
                 dias_suspension=0,
                 dias_indemnizacion=0
             )
-        self.assertEqual(str(context.exception), "El salario variable no puede ser negativo")
+        self.assertEqual(str(context.exception), "Error de salario variable. El salario variable no puede ser negativo, ingrese un numero mayor que 0")
 
     
     def test_error_4(self):
         with self.assertRaises(ErrorLiquidacion) as context:
             Liquidacion(
                 salario_auxilio=100000,
-                salario_sin_auxilio=1500000,
+                salario_sin_auxilio=1462000,
                 salario_variable=0,
                 fecha_inicio="01/02/2023",  # Fecha de inicio posterior
                 fecha_fin="01/01/2023",
                 dias_suspension=0,
                 dias_indemnizacion=0
             )
-        self.assertEqual(str(context.exception), "La fecha de inicio no puede ser posterior a la fecha de fin")
+        self.assertEqual(str(context.exception), "Fecha incorrecta. La fecha de inicio no puede ser posterior a la fecha de fin. Por favor ingrese fechas validas")
 
 if __name__ == '__main__':
     unittest.main()
