@@ -7,19 +7,19 @@ class LiquidacionEmpleado:
     def __init__(self, salario_auxilio, salario_sin_auxilio, salario_variable, fecha_inicio, fecha_fin, dias_suspension, dias_indemnizacion):
 
         if salario_sin_auxilio < 1300000:
-            raise ErrorLiquidacion("El salario sin auxilio debe ser mayor o igual a 1,300,000")
+            raise ErrorLiquidacion("Salario incorrecto. El salario sin auxilio debe ser mayor o igual a 1,300,000, por favor ingrese un salario igual o mayor")
         
         if salario_variable < 0:
-            raise ErrorLiquidacion("El salario variable no puede ser negativo")
+            raise ErrorLiquidacion("Error de salario variable. El salario variable no puede ser negativo, ingrese un numero mayor que 0")
         
         try:
             self.fecha_inicio = datetime.strptime(fecha_inicio, "%d/%m/%Y")
             self.fecha_fin = datetime.strptime(fecha_fin, "%d/%m/%Y")
         except ValueError:
-            raise ErrorLiquidacion("El formato de la fecha debe ser dd/mm/yyyy")
+            raise ErrorLiquidacion("Error de formato. El formato de la fecha es incorrecto. debe ser dia/mes/año de la siguiente forma dd/mm/yyyy")
         
         if self.fecha_inicio > self.fecha_fin:
-            raise ErrorLiquidacion("La fecha de inicio no puede ser posterior a la fecha de fin")
+            raise ErrorLiquidacion("Fecha incorrecta. La fecha de inicio no puede ser posterior a la fecha de fin. Por favor ingrese fechas validas")
 
         self.salario_auxilio = salario_auxilio + salario_variable  # Se suma el salario variable
         self.salario_sin_auxilio = salario_sin_auxilio
