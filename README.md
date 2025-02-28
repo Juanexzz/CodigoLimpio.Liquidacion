@@ -33,6 +33,26 @@ Un sistema para calcular la liquidación laboral de empleados según la normativ
 1. Ejecutar tests python -m unittest test/test_logic.py
 2. Ejecutar codigo
 	
+## 🔍 Entradas
+1. Sueldo
+2. Sueldo con Auxilio
+3. Fecha de ingreso
+4. Fecha de retiro
+5. Salario Variable
+6. Dias de suspencion
+7. Dias de indemnizacion
+
+## ⚙️ Procesos
+- Este proceso consiste en calcular la liquidación final de una persona (empleado) cuando termina su vínculo laboral, así como las prestaciones sociales que le corresponden según la normativa vigente.
+  
+## 📤 Salidas
+1. Valor de Prima
+2. Valor de Cesantias
+3. Valor de intereses de cesantias
+4. Valor de Vacaciones
+5. Total Liquidacion
+
+
 ## 🗂️ Estructura del Proyecto
 ```
 └── src/
@@ -50,6 +70,6 @@ MIT License
 
 ## 👥 Contribuidores
 
-- Miguel Guarnizo
-- Miguel Salas 
+- Miguel Guarnizo github.com/Miguel-Angel-Salazar
+- Miguel Salas github.com/Emblask
 	
