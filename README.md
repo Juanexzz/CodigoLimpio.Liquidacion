@@ -58,10 +58,15 @@ Un sistema para calcular la liquidación laboral de empleados según la normativ
 └── src/
     ├── model/
     │   └── liquidacion_total.py  # Lógica principal
-    │	└── consola.py 		  #logica para imprimir por consola	
+    │	└── consola.py 		  #logica para imprimir por consola
+    │	└── __init__.py	
     ├── tests/
-    │   └── test_liquidacion.py   # Pruebas unitarias
+    │   └── test_logic.py   # Pruebas unitarias
+    │	└── __init__.py
     └── README.md                 # Documentación
+    └── app.py
+    └── casos de prueba codigo_limpio1.0.xlsx
+    └── Experto.mp3
 ```
 
 ## 📄 Licencia
