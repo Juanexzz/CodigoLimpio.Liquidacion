@@ -57,16 +57,24 @@ Un sistema para calcular la liquidación laboral de empleados según la normativ
 ```
 └── src/
     ├── model/
-    │   └── liquidacion_total.py  # Lógica principal
-    │	└── consola.py 		  #logica para imprimir por consola
+    │   ├──  liquidacion_total.py
     │	└── __init__.py	
-    ├── tests/
-    │   └── test_logic.py   # Pruebas unitarias
-    │	└── __init__.py
-    └── README.md                 # Documentación
-    └── app.py
-    └── casos de prueba codigo_limpio1.0.xlsx
-    └── Experto.mp3
+    ├── view/
+    │	├── console/
+    │	│    └── main.py
+    │	├── gui/
+    │	│    └── kivy.py
+    │	└── web/ 
+    │	     └── app.py
+    ├── controller/
+    │	├── __init__.py
+    │	├── urls.py
+    │	└── blueprints.py
+    ├── README.md                
+    ├── casos de prueba codigo_limpio1.0.xlsx
+    ├── Experto.mp3
+    ├── config.py
+    └── test.py
 ```
 
 ## 📄 Licencia
