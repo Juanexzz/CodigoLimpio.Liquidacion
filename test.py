@@ -1,8 +1,8 @@
 import unittest
 import sys
 sys.path.append("src")
-from model.liquidacion_total import LiquidacionEmpleado as Liquidacion
-from model.liquidacion_total import ErrorLiquidacion as ErrorLiquidacion
+from src.model.liquidacion_total import LiquidacionEmpleado as Liquidacion
+from src.model.liquidacion_total import ErrorLiquidacion as ErrorLiquidacion
 
 class TestLiquidacion(unittest.TestCase):
 
