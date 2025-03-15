@@ -37,7 +37,7 @@ Un sistema para calcular la liquidación laboral de empleados según la normativ
    - cd src/view/console
    - python main.py
      
-Con esto ya tendras acceso a la consola.
+"Con esto ya tendras acceso a la consola."
 
 3. Para que veas su funcionamientos, te recomendamos usar uno de nuestros casos pruba.
 
