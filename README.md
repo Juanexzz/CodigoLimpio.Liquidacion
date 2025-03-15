@@ -88,7 +88,7 @@ Un sistema para calcular la liquidación laboral de empleados según la normativ
     ├── controller/
     │	├── __init__.py
     │	├── urls.py				Archivo vacio de momento
-    │	└── blueprints.py	ss		Archivo vacio de momento
+    │	└── blueprints.py			Archivo vacio de momento
     ├── tests
     │	├── __init__.py
     │	└── test.py				Archivo que contiene los 10 tests realizados al programa
