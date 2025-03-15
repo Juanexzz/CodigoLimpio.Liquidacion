@@ -1,4 +1,10 @@
-import liquidacion_total
+import sys
+import os
+
+# Agrega la carpeta 'src' al path
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
+
+import model.liquidacion_total
 
 try:
     salario_auxilio = float(input("Ingrese el salario con auxilio: "))
