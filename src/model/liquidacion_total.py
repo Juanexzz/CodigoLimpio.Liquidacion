@@ -2,7 +2,7 @@ from datetime import datetime
 
 salario_minimo = 1300000
 dias_al_mes = 30
-dias_al_anio = 360
+dias_al_año = 360
 porcentaje_interes = 0.12
 dias_de_vacaciones = 15
 class ErrorLiquidacion (Exception):
@@ -35,24 +35,24 @@ class LiquidacionEmpleado:
         self.dias_indemnizacion = dias_indemnizacion
 
     def calcular_prima(self):
-        return round(self.salario_auxilio * self.dias_trabajados / dias_al_anio)
+        return (self.salario_auxilio * self.dias_trabajados / dias_al_año)
 
     def calcular_cesantias(self):
-        return round(self.salario_auxilio * self.dias_trabajados / dias_al_anio)
+        return (self.salario_auxilio * self.dias_trabajados / dias_al_año)
 
     def calcular_intereses_cesantias(self):
         cesantias = self.calcular_cesantias()
-        return round(cesantias * porcentaje_interes * self.dias_trabajados / dias_al_anio)
+        return (cesantias * porcentaje_interes * self.dias_trabajados / dias_al_año)
 
     def calcular_vacaciones(self):
-        dias_vacaciones = self.dias_trabajados * dias_de_vacaciones / dias_al_anio
-        return round(dias_vacaciones * self.salario_diario)
+        dias_vacaciones = self.dias_trabajados * dias_de_vacaciones / dias_al_año
+        return (dias_vacaciones * self.salario_diario)
 
     def calcular_indemnizacion(self):
-        return round(self.salario_sin_auxilio / dias_al_mes * self.dias_indemnizacion)
+        return (self.salario_sin_auxilio / dias_al_mes * self.dias_indemnizacion)
 
     def calcular_liquidacion_total(self):
         total = (self.calcular_prima() + self.calcular_cesantias() +
                  self.calcular_intereses_cesantias() + self.calcular_vacaciones() +
                  self.calcular_indemnizacion()) 
-        return round(total, 0)
+        return (total)

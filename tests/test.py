@@ -1,6 +1,8 @@
 import unittest
 import sys
 sys.path.append("src")
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 from src.model.liquidacion_total import LiquidacionEmpleado as Liquidacion
 from src.model.liquidacion_total import ErrorLiquidacion as ErrorLiquidacion
 
@@ -17,11 +19,11 @@ class TestLiquidacion(unittest.TestCase):
         salario_variable = 0
 
         # Resultados esperados 
-        prima = 609167
-        vacaciones = 270833
-        cesantias = 609167
-        intereses_cesantias = 30458
-        liquidacion_total = 1519625
+        prima = 609166.6666666666
+        vacaciones = 270833.3333333334
+        cesantias = 609166.6666666666
+        intereses_cesantias = 30458.33333333333
+        liquidacion_total = 1519625.0
 
 
         mi_liquidacion = Liquidacion(salario_auxilio, salario_sin_auxilio, salario_variable, fecha_inicio, fecha_fin, dias_suspension, dias_indemnizacion)
@@ -48,8 +50,8 @@ class TestLiquidacion(unittest.TestCase):
         prima = 1634300
         vacaciones = 737500
         cesantias = 1634300
-        intereses_cesantias = 192847
-        liquidacion_total = 4198947
+        intereses_cesantias = 192847.4
+        liquidacion_total = 4198947.4
 
         mi_liquidacion = Liquidacion(salario_auxilio, salario_sin_auxilio, salario_variable, fecha_inicio, fecha_fin, dias_suspension, dias_indemnizacion)
 
@@ -71,11 +73,11 @@ class TestLiquidacion(unittest.TestCase):
         salario_variable = 0
 
         # Resultados esperados
-        prima = 1230839
-        vacaciones = 588194
-        cesantias = 1230839
-        intereses_cesantias = 49644 
-        liquidacion_total = 3099516
+        prima = 1230838.888888889
+        vacaciones = 588194.4444444445
+        cesantias = 1230838.888888889
+        intereses_cesantias = 49643.83518518519 
+        liquidacion_total = 3099516.0574074076
 
         mi_liquidacion = Liquidacion(salario_auxilio, salario_sin_auxilio, salario_variable, fecha_inicio, fecha_fin, dias_suspension, dias_indemnizacion)
 
@@ -98,10 +100,10 @@ class TestLiquidacion(unittest.TestCase):
 
         # Resultados esperados
         prima = 6127800
-        vacaciones = 2634306
+        vacaciones = 2634305.5555555555
         cesantias = 6127800
-        intereses_cesantias = 2980153
-        liquidacion_total = 17870059
+        intereses_cesantias = 2980153.4
+        liquidacion_total = 17870058.955555554
 
         mi_liquidacion = Liquidacion(salario_auxilio, salario_sin_auxilio, salario_variable, fecha_inicio, fecha_fin, dias_suspension, dias_indemnizacion)
 
@@ -123,11 +125,11 @@ class TestLiquidacion(unittest.TestCase):
         salario_variable = 0
 
         # Resultados esperados 
-        prima = 1360472
-        vacaciones = 604861
-        cesantias = 1360472
-        intereses_cesantias = 151919 
-        liquidacion_total = 3477724
+        prima = 1360472.2222222222
+        vacaciones = 604861.1111111111
+        cesantias = 1360472.2222222222
+        intereses_cesantias = 151919.39814814815 
+        liquidacion_total = 3477724.953703704
 
         mi_liquidacion = Liquidacion(salario_auxilio, salario_sin_auxilio, salario_variable, fecha_inicio, fecha_fin, dias_suspension, dias_indemnizacion)
 
@@ -149,11 +151,11 @@ class TestLiquidacion(unittest.TestCase):
         salario_variable = 0
 
         # Resultados esperados 
-        prima = 1732633
-        vacaciones = 786667
-        cesantias = 1732633 
-        intereses_cesantias = 204451
-        liquidacion_total = 7123051
+        prima = 1732633.3333333333
+        vacaciones = 786666.6666666667
+        cesantias = 1732633.3333333333 
+        intereses_cesantias = 204450.73333333328
+        liquidacion_total = 7123050.733333333
 
         mi_liquidacion = Liquidacion(salario_auxilio, salario_sin_auxilio, salario_variable, fecha_inicio, fecha_fin, dias_suspension, dias_indemnizacion)
 
