@@ -3,9 +3,16 @@
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
-Un sistema para calcular la liquidación laboral de empleados según la normativa colombiana, incluyendo prestaciones sociales, indemnizaciones y otros conceptos.
+---
+
+## 👥 Contribuidores
+
+- Miguel Guarnizo github.com/Miguel-Angel-Salazar
+- Miguel Salas github.com/Emblask
 
 ---
+
+Un sistema para calcular la liquidación laboral de empleados según la normativa colombiana, incluyendo prestaciones sociales, indemnizaciones y otros conceptos.
 
 ## 🚀 Características
 
@@ -28,24 +35,23 @@ Un sistema para calcular la liquidación laboral de empleados según la normativ
    
 2. Requisitos:
         Python 3.8+
+
 ## ⌨️ Uso Interfaz por Consola
 
-1. Acceder a la terminal de VS Code, lo puedes de hacer de forma manual o con el atajo
-   Ctrl + Ñ (Windows/Linux) o Cmd + Ñ (Mac)
-
-2. Vas a poner lo siguiente:
-   - cd src/view/console
-   - python main.py
-     
-"Con esto ya tendras acceso a la consola."
-
-3. Para que veas su funcionamientos, te recomendamos usar uno de nuestros casos pruba.
+1. Por medio de la consola, Ubicados en la carpeta raiz del proyecto \CodigoLimpio.Liquidacion
+2. ejecutar el siguiente comando:
+   - python src/view/console/main.py
 
 
-## 🛠️ Uso
-1. Ejecutar tests python -m unittest test/test_logic.py
-2. Ejecutar codigo
-	
+
+
+## 🛠️ Uso de los tests
+1. Por medio de la consola, Ubicados en la carpeta raiz del proyecto \CodigoLimpio.Liquidacion
+2. Ejecutar el siguiente comando:
+   - python tests/test.py
+   
+---
+
 ## 🔍 Entradas
 1. Sueldo
 2. Sueldo con Auxilio
@@ -65,37 +71,36 @@ Un sistema para calcular la liquidación laboral de empleados según la normativ
 4. Valor de Vacaciones
 5. Total Liquidacion
 
-
+--- 
 ## 🗂️ Estructura del Proyecto
 ```
 └── src/
     ├── model/
-    │   ├──  liquidacion_total.py
+    │   ├──  liquidacion_total.py		Es el archivo base del proyecto, que contiene la logica para calcular la liquidacíon total
     │	└── __init__.py	
     ├── view/
     │	├── console/
-    │	│    └── main.py
+    │	│    └── main.py			Archivo por el cual se corre por consola el programa
     │	├── gui/
-    │	│    └── kivy.py
+    │	│    └── kivy.py			Archivo vacio de momento
     │	└── web/ 
-    │	     └── app.py
+    │	     └── app.py				Archivo vacio de momento
     ├── controller/
     │	├── __init__.py
-    │	├── urls.py
-    │	└── blueprints.py
-    ├── README.md                
-    ├── casos de prueba codigo_limpio1.0.xlsx
-    ├── Experto.mp3
-    ├── config.py
-    └── test.py
+    │	├── urls.py				Archivo vacio de momento
+    │	└── blueprints.py	ss		Archivo vacio de momento
+    ├── tests
+    │	├── __init__.py
+    │	└── test.py				Archivo que contiene los 10 tests realizados al programa
+    ├──	README.md                		README.md actual con información respecto al codigo
+    ├── casos de prueba codigo_limpio1.0.xlsx	Excel con información de los casos de prueba
+    ├── Experto.mp3				Audio del experto que nos guió en el proceso de calcular la liquidación total
+    └── config.py				Archivo vacio de momento
 ```
 
 ## 📄 Licencia
 
 MIT License
 
-## 👥 Contribuidores
 
-- Miguel Guarnizo github.com/Miguel-Angel-Salazar
-- Miguel Salas github.com/Emblask
 	
