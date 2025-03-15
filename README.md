@@ -28,7 +28,19 @@ Un sistema para calcular la liquidación laboral de empleados según la normativ
    
 2. Requisitos:
         Python 3.8+
-        
+## ⌨️ Uso Interfaz por Consola
+
+1. Acceder a la terminal de VS Code, lo puedes de hacer de forma manual o con el atajo
+   Ctrl + Ñ (Windows/Linux) o Cmd + Ñ (Mac)
+
+2. Vas a poner lo siguiente:
+   - cd src/view/console
+   - python main.py
+Con esto ya tendras acceso a la consola.
+
+3. Para que veas su funcionamientos, te recomendamos usar uno de nuestros casos pruba.
+
+
 ## 🛠️ Uso
 1. Ejecutar tests python -m unittest test/test_logic.py
 2. Ejecutar codigo
