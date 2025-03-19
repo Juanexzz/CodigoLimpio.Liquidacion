@@ -25,5 +25,4 @@ try:
     print(f"Total liquidación: {liquidacion.calcular_liquidacion_total()}")
 
 except liquidacion_total.ErrorLiquidacion as e:
-    # Captura el error y muestra solo el mensaje
     print(f"Error: {e}")
