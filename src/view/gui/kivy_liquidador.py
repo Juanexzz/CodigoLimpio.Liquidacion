@@ -31,7 +31,8 @@ class liquidadorLaboral(App):
         contenedor_inputs.add_widget(label_fecha_inicio)
 
         fecha_inicio = TextInput(size_hint = (1 , None),
-                                 height = 100)
+                                 height = 100,
+                                 font_size = 25)
         contenedor_inputs.add_widget(fecha_inicio)
 
 
@@ -42,7 +43,8 @@ class liquidadorLaboral(App):
         contenedor_inputs.add_widget(label_fecha_fin)
 
         fecha_fin = TextInput(size_hint = (1 , None),
-                              height = 100)
+                              height = 100,
+                              font_size = 25)
         contenedor_inputs.add_widget(fecha_fin)
 
 
@@ -53,7 +55,8 @@ class liquidadorLaboral(App):
         contenedor_inputs.add_widget(label_salario_auxilio)
 
         salario_auxilio = TextInput(size_hint = (1 , None),
-                                    height = 100)
+                                    height = 100,
+                                    font_size = 25)
         contenedor_inputs.add_widget(salario_auxilio)
 
 
@@ -64,7 +67,8 @@ class liquidadorLaboral(App):
         contenedor_inputs.add_widget(lable_salario_sin_auxilio)
 
         salario_sin_auxilio = TextInput(size_hint = (1 , None),
-                                        height = 100)
+                                        height = 100,
+                                        font_size = 25)
         contenedor_inputs.add_widget(salario_sin_auxilio)
 
 
@@ -75,7 +79,8 @@ class liquidadorLaboral(App):
         contenedor_inputs.add_widget(label_dias_suspension)
 
         dias_suspension = TextInput(size_hint = (1 , None),
-                                    height = 100)
+                                    height = 100,
+                                    font_size = 25)
         contenedor_inputs.add_widget(dias_suspension)
 
 
@@ -86,7 +91,8 @@ class liquidadorLaboral(App):
         contenedor_inputs.add_widget(label_dias_indemnizacion)
 
         dias_indemnizacion = TextInput(size_hint = (1 , None),
-                                       height = 100)
+                                       height = 100,
+                                       font_size = 25)
         contenedor_inputs.add_widget(dias_indemnizacion)
 
 
@@ -97,7 +103,8 @@ class liquidadorLaboral(App):
         contenedor_inputs.add_widget(label_salario_variable)
 
         salario_variable = TextInput(size_hint = (1 , None),
-                                     height = 100)
+                                     height = 100,
+                                     font_size = 25)
         contenedor_inputs.add_widget(salario_variable)
 
         contenedor.add_widget(contenedor_inputs)
