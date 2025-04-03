@@ -12,10 +12,10 @@ from kivy.uix.gridlayout import GridLayout
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.screenmanager import ScreenManager, Screen
 
-
-class liquidadorLaboral(App):
-
-    def build(self):
+class MainScreen(Screen):
+    
+    def __init__(self, **kw):
+        super().__init__(**kw)
         self.contenedor = BoxLayout(orientation = "vertical")
         self.contenedor_inputs = GridLayout(cols = 2)
 
@@ -116,9 +116,9 @@ class liquidadorLaboral(App):
                                      size_hint = (1, 0.15))
         boton_guardar_datos.bind(on_press = self.calcular)
         self.contenedor.add_widget(boton_guardar_datos)
-
-        return self.contenedor
-
+        
+        self.add_widget(self.contenedor)
+        
     def calcular(self, sender):
         fecha_inicio = self.fecha_inicio
         fecha_fin = self.fecha_fin
@@ -137,6 +137,14 @@ class liquidadorLaboral(App):
         indemnizacion = liquidacion.calcular_indemnizacion()
         total_liquidacion = liquidacion.calcular_liquidacion_total()
 
+class SecondScreen(Screen):
+    pass
+class liquidadorLaboral(App):
+    def build(self):
+        sm = ScreenManager()
+        sm.add_widget(MainScreen(name = "main"))
+        sm.add_widget(SecondScreen(name = "second"))
+        return sm
 
 if __name__ == "__main__":
     liquidadorLaboral().run()
