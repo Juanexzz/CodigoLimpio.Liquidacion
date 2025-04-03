@@ -26,3 +26,4 @@ try:
 
 except liquidacion_total.ErrorLiquidacion as e:
     print(f"Error: {e}")
+    

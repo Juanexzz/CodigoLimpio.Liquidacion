@@ -10,6 +10,7 @@ from kivy.uix.textinput import TextInput
 from kivy.uix.button import Button
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.screenmanager import ScreenManager, Screen
 
 
 class liquidadorLaboral(App):
@@ -113,7 +114,7 @@ class liquidadorLaboral(App):
         boton_guardar_datos = Button(text = "Calcular", 
                                      font_size = 30,
                                      size_hint = (1, 0.15))
-        boton_guardar_datos.bind(on_press = self.calcular())
+        boton_guardar_datos.bind(on_press = self.calcular)
         self.contenedor.add_widget(boton_guardar_datos)
 
         return self.contenedor
@@ -127,9 +128,14 @@ class liquidadorLaboral(App):
         dias_indemnizacion = self.dias_indemnizacion
         salario_variable = self.salario_variable
 
-        liquidacion = liquidacion_total.LiquidacionEmpleado(salario_auxilio, salario_sin_auxilio, salario_variable, fecha_inicio, fecha_fin, dias_suspension, dias_indemnizacion)
-        
+        liquidacion = liquidacion_total.LiquidacionEmpleado(salario_auxilio.text, salario_sin_auxilio.text, salario_variable.text, fecha_inicio.text, fecha_fin.text, dias_suspension.text, dias_indemnizacion.text)
 
+        prima = liquidacion.calcular_prima()
+        cesantias = liquidacion.calcular_cesantias()
+        intereses_cesantias = liquidacion.calcular_intereses_cesantias()
+        vacaciones = liquidacion.calcular_vacaciones()
+        indemnizacion = liquidacion.calcular_indemnizacion()
+        total_liquidacion = liquidacion.calcular_liquidacion_total()
 
 
 if __name__ == "__main__":
