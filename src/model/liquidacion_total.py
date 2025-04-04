@@ -11,11 +11,11 @@ class ErrorLiquidacion (Exception):
 class LiquidacionEmpleado:
     def __init__(self, salario_auxilio: int, salario_sin_auxilio: int, salario_variable: int, fecha_inicio: int, fecha_fin: int, dias_suspension: int, dias_indemnizacion: int):
 
-        salario_auxilio = int(salario_auxilio)
-        salario_sin_auxilio = int(salario_sin_auxilio)
-        salario_variable = int(salario_variable)
-        dias_suspension = int(dias_suspension)
-        dias_indemnizacion = int(dias_indemnizacion)
+        salario_auxilio = float(salario_auxilio)
+        salario_sin_auxilio = float(salario_sin_auxilio)
+        salario_variable = float(salario_variable)
+        dias_suspension = float(dias_suspension)
+        dias_indemnizacion = float(dias_indemnizacion)
 
         if salario_sin_auxilio < salario_minimo:
             raise ErrorLiquidacion("Salario incorrecto. El salario sin auxilio debe ser mayor o igual a 1,300,000, por favor ingrese un salario igual o mayor")
