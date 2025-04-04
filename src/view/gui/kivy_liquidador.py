@@ -130,12 +130,12 @@ class MainScreen(Screen):
 
         liquidacion = liquidacion_total.LiquidacionEmpleado(salario_auxilio, salario_sin_auxilio, salario_variable, fecha_inicio, fecha_fin, dias_suspension, dias_indemnizacion)
 
-        resultados = {"prima": str(liquidacion.calcular_prima()),
-                      "cesantias": str(liquidacion.calcular_cesantias()),
-                      "intereses_cesantias": str(liquidacion.calcular_intereses_cesantias()),
-                      "vacaciones": str(liquidacion.calcular_vacaciones()),
-                      "indemnizacion": str(liquidacion.calcular_indemnizacion()),
-                      "total_liquidacion": str(liquidacion.calcular_liquidacion_total())}
+        resultados = {"prima": str(round(liquidacion.calcular_prima(), 2)),
+                      "cesantias": str(round(liquidacion.calcular_cesantias(), 2)),
+                      "intereses_cesantias": str(round(liquidacion.calcular_intereses_cesantias(), 2)),
+                      "vacaciones": str(round(liquidacion.calcular_vacaciones(), 2)),
+                      "indemnizacion": str(round(liquidacion.calcular_indemnizacion(), 2)),
+                      "total_liquidacion": str(round(liquidacion.calcular_liquidacion_total(), 2))}
         
         self.manager.get_screen("second").actualizar_resultados(resultados)
         self.cambiar_ventana()
