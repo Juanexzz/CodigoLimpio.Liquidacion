@@ -259,9 +259,6 @@ class SecondScreen(Screen):
         MainScreen().reiniciar_calculadora()
         
 
-
-
-
 class liquidadorLaboral(App):
     def build(self):
         sm = ScreenManager()
