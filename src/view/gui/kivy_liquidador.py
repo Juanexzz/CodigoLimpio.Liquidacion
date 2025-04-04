@@ -116,29 +116,152 @@ class MainScreen(Screen):
                                      size_hint = (1, 0.15))
         boton_guardar_datos.bind(on_press = self.calcular)
         self.contenedor.add_widget(boton_guardar_datos)
-        
+
         self.add_widget(self.contenedor)
         
     def calcular(self, sender):
-        fecha_inicio = self.fecha_inicio
-        fecha_fin = self.fecha_fin
-        salario_auxilio = self.salario_auxilio
-        salario_sin_auxilio = self.salario_sin_auxilio
-        dias_suspension = self.dias_suspension
-        dias_indemnizacion = self.dias_indemnizacion
-        salario_variable = self.salario_variable
+        fecha_inicio = self.fecha_inicio.text
+        fecha_fin = self.fecha_fin.text
+        salario_auxilio = self.salario_auxilio.text
+        salario_sin_auxilio = self.salario_sin_auxilio.text
+        dias_suspension = self.dias_suspension.text
+        dias_indemnizacion = self.dias_indemnizacion.text
+        salario_variable = self.salario_variable.text
 
-        liquidacion = liquidacion_total.LiquidacionEmpleado(salario_auxilio.text, salario_sin_auxilio.text, salario_variable.text, fecha_inicio.text, fecha_fin.text, dias_suspension.text, dias_indemnizacion.text)
+        liquidacion = liquidacion_total.LiquidacionEmpleado(salario_auxilio, salario_sin_auxilio, salario_variable, fecha_inicio, fecha_fin, dias_suspension, dias_indemnizacion)
 
-        prima = liquidacion.calcular_prima()
-        cesantias = liquidacion.calcular_cesantias()
-        intereses_cesantias = liquidacion.calcular_intereses_cesantias()
-        vacaciones = liquidacion.calcular_vacaciones()
-        indemnizacion = liquidacion.calcular_indemnizacion()
-        total_liquidacion = liquidacion.calcular_liquidacion_total()
+        resultados = {"prima": str(liquidacion.calcular_prima()),
+                      "cesantias": str(liquidacion.calcular_cesantias()),
+                      "intereses_cesantias": str(liquidacion.calcular_intereses_cesantias()),
+                      "vacaciones": str(liquidacion.calcular_vacaciones()),
+                      "indemnizacion": str(liquidacion.calcular_indemnizacion()),
+                      "total_liquidacion": str(liquidacion.calcular_liquidacion_total())}
+        
+        self.manager.get_screen("second").actualizar_resultados(resultados)
+        self.cambiar_ventana()
+
+    def cambiar_ventana(self):
+        self.manager.current = "second"
+
+    def reiniciar_calculadora(self):
+        self.fecha_inicio.text = ""
+        self.fecha_fin.text = ""
+        self.salario_auxilio.text = ""
+        self.salario_sin_auxilio.text = ""
+        self.dias_suspension.text = ""
+        self.dias_indemnizacion.text = ""
+        self.salario_variable.text = ""
 
 class SecondScreen(Screen):
-    pass
+    def __init__(self, **kw):
+        super().__init__(**kw)
+        self.contenedor = BoxLayout(orientation = "vertical")
+        self.contenedor_labels = GridLayout(cols = 2)
+
+        self.titulo = Label(text = "Resultados",
+                            font_size = 55,
+                            height = 150,
+                            size_hint = (1, None))
+        self.contenedor.add_widget(self.titulo)
+
+
+        self.label_prima = Label(text = "Tu prima es:",
+                                 size_hint = (1 , None),
+                                 height = 100,
+                                 font_size = 30)
+        self.contenedor_labels.add_widget(self.label_prima)
+
+        self.prima = TextInput(size_hint = (1 , None),
+                               height = 100,
+                               font_size = 25)
+        self.contenedor_labels.add_widget(self.prima)
+
+
+        self.label_cesantias = Label(text = "Tus cesantias son:",
+                                     size_hint = (1 , None),
+                                     height = 100,
+                                     font_size = 30)
+        self.contenedor_labels.add_widget(self.label_cesantias)
+
+        self.cesantias = TextInput(size_hint = (1 , None),
+                                   height = 100,
+                                   font_size = 25)
+        self.contenedor_labels.add_widget(self.cesantias)
+
+
+        self.label_intereses_cesantias = Label(text = "Tus intereses sobre las cesantias son:",
+                                               size_hint = (1 , None),
+                                               height = 100,
+                                               font_size = 30)
+        self.contenedor_labels.add_widget(self.label_intereses_cesantias)
+
+        self.intereses_cesantias = TextInput(size_hint = (1 , None),
+                                             height = 100,
+                                             font_size = 25)
+        self.contenedor_labels.add_widget(self.intereses_cesantias)
+
+
+        self.label_vacaciones = Label(text = "tus vacaciones son:",
+                                      size_hint = (1 , None),
+                                      height = 100,
+                                      font_size = 30)
+        self.contenedor_labels.add_widget(self.label_vacaciones)
+
+        self.vacaciones = TextInput(size_hint = (1 , None),
+                                    height = 100,
+                                    font_size = 25)
+        self.contenedor_labels.add_widget(self.vacaciones)
+
+
+        self.label_indemnizacion = Label(text = "tu indemnizacion es:",
+                                         size_hint = (1 , None),
+                                         height = 100,
+                                         font_size = 30)
+        self.contenedor_labels.add_widget(self.label_indemnizacion)
+
+        self.indemnizacion = TextInput(size_hint = (1 , None),
+                                       height = 100,
+                                       font_size = 25)
+        self.contenedor_labels.add_widget(self.indemnizacion)
+
+
+        self.label_total_liquidacion = Label(text = "tu liquidacion es:",
+                                             size_hint = (1 , None),
+                                             height = 100,
+                                             font_size = 30)
+        self.contenedor_labels.add_widget(self.label_total_liquidacion)
+
+        self.total_liquidacion = TextInput(size_hint = (1 , None),
+                                           height = 100,
+                                           font_size = 25)
+        self.contenedor_labels.add_widget(self.total_liquidacion)
+
+        self.contenedor.add_widget(self.contenedor_labels)
+
+        self.regresar_inicio = Button(text = "Volver",
+                             font_size = 30,
+                             size_hint = (1, 0.15))
+        self.regresar_inicio.bind(on_press = self.volver_inicio)
+        self.contenedor.add_widget(self.regresar_inicio)
+
+        self.add_widget(self.contenedor)
+    
+    def actualizar_resultados(self, resultados):
+        self.prima.text = resultados.get("prima", "0")
+        self.cesantias.text = resultados.get("cesantias", "0")
+        self.intereses_cesantias.text = resultados.get("intereses_cesantias", "0")
+        self.vacaciones.text = resultados.get("vacaciones", "0")
+        self.indemnizacion.text = resultados.get("indemnizacion", "0")
+        self.total_liquidacion.text = resultados.get("total_liquidacion", "0")
+
+    def volver_inicio(self, sender):
+        self.manager.current = "main"
+        MainScreen().reiniciar_calculadora()
+        
+
+
+
+
 class liquidadorLaboral(App):
     def build(self):
         sm = ScreenManager()
@@ -148,3 +271,6 @@ class liquidadorLaboral(App):
 
 if __name__ == "__main__":
     liquidadorLaboral().run()
+
+
+#Ver porque no me esta borrando los datos con el boton volver
