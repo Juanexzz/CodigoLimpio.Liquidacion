@@ -11,6 +11,7 @@ from kivy.uix.button import Button
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.screenmanager import ScreenManager, Screen
+from kivy.graphics import Color, Rectangle
 
 class MainScreen(Screen):
     
@@ -18,6 +19,13 @@ class MainScreen(Screen):
         super().__init__(**kw)
         self.contenedor = BoxLayout(orientation = "vertical")
         self.contenedor_inputs = GridLayout(cols = 2)
+
+        with self.contenedor_inputs.canvas.before:
+            Color(0.4, 0.9, 0.4, 1)  
+            self.bg_rect = Rectangle(pos=self.contenedor_inputs.pos, size=self.contenedor_inputs.size)
+        
+        self.contenedor_inputs.bind(size=self._update_bg_rect, pos=self._update_bg_rect)
+
 
         self.titulo = Label(text = "Liquidador",
                        font_size = 55,
@@ -29,7 +37,8 @@ class MainScreen(Screen):
         label_fecha_inicio = Label(text = "Ingrese la fecha de inicio:",
                                    size_hint = (1 , None),
                                    height = 100,
-                                   font_size = 30)
+                                   font_size = 30,
+                                   color = "black")
         self.contenedor_inputs.add_widget(label_fecha_inicio)
 
         self.fecha_inicio = TextInput(size_hint = (1 , None),
@@ -118,6 +127,10 @@ class MainScreen(Screen):
         self.contenedor.add_widget(boton_guardar_datos)
 
         self.add_widget(self.contenedor)
+    
+    def _update_bg_rect(self, *args):
+        self.bg_rect.pos = self.contenedor_inputs.pos
+        self.bg_rect.size = self.contenedor_inputs.size
         
     def calcular(self, sender):
         fecha_inicio = self.fecha_inicio.text
