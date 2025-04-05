@@ -255,8 +255,8 @@ class SecondScreen(Screen):
         self.total_liquidacion.text = resultados.get("total_liquidacion", "0")
 
     def volver_inicio(self, sender):
+        self.manager.get_screen("main").reiniciar_calculadora()
         self.manager.current = "main"
-        MainScreen().reiniciar_calculadora()
         
 
 class liquidadorLaboral(App):
