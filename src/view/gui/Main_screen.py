@@ -49,7 +49,8 @@ class MainScreen(Screen):
         label_fecha_fin = Label(text = "Ingrese la fecha de fin:",
                                 size_hint = (1 , None),
                                 height = 100,
-                                font_size = 30)
+                                font_size = 30,
+                                color = "black")
         self.contenedor_inputs.add_widget(label_fecha_fin)
 
         self.fecha_fin = TextInput(size_hint = (1 , None),
@@ -61,7 +62,8 @@ class MainScreen(Screen):
         label_salario_auxilio = Label(text = "Por favor ingrese su salario con auxilio:",
                                       size_hint = (1 , None),
                                       height = 100,
-                                      font_size = 30)
+                                      font_size = 30,
+                                      color = "black")
         self.contenedor_inputs.add_widget(label_salario_auxilio)
 
         self.salario_auxilio = TextInput(size_hint = (1 , None),
@@ -73,7 +75,8 @@ class MainScreen(Screen):
         lable_salario_sin_auxilio = Label(text = "Ingrese su salario sin auxilio:",
                                           size_hint = (1 , None),
                                           height = 100,
-                                          font_size = 30)
+                                          font_size = 30,
+                                          color = "black")
         self.contenedor_inputs.add_widget(lable_salario_sin_auxilio)
 
         self.salario_sin_auxilio = TextInput(size_hint = (1 , None),
@@ -85,7 +88,8 @@ class MainScreen(Screen):
         label_dias_suspension = Label(text = "Ingrese sus dias de suspension:", 
                                       size_hint = (1 , None),
                                       height = 100,
-                                      font_size = 30)
+                                      font_size = 30,
+                                      color = "black")
         self.contenedor_inputs.add_widget(label_dias_suspension)
 
         self.dias_suspension = TextInput(size_hint = (1 , None),
@@ -97,7 +101,8 @@ class MainScreen(Screen):
         label_dias_indemnizacion = Label(text = "Ingrese sus dias de indemnizacion:",
                                          size_hint = (1 , None),
                                          height = 100,
-                                         font_size = 30)
+                                         font_size = 30,
+                                         color = "black")
         self.contenedor_inputs.add_widget(label_dias_indemnizacion)
 
         self.dias_indemnizacion = TextInput(size_hint = (1 , None),
@@ -109,7 +114,8 @@ class MainScreen(Screen):
         label_salario_variable = Label(text = "Ingrese su salario:",
                                        size_hint = (1 , None),
                                        height = 100,
-                                       font_size = 30)
+                                       font_size = 30,
+                                       color = "black")
         self.contenedor_inputs.add_widget(label_salario_variable)
 
         self.salario_variable = TextInput(size_hint = (1 , None),
