@@ -23,7 +23,7 @@ class MainScreen(Screen):
             Color(0.4, 0.9, 0.4, 1)  
             self.bg_rect = Rectangle(pos=self.contenedor_inputs.pos, size=self.contenedor_inputs.size)
         
-        self.contenedor_inputs.bind(size=self._update_bg_rect, pos=self._update_bg_rect)
+        self.contenedor_inputs.bind(size = self._actualizar_background, pos = self._actualizar_background)
 
 
         self.titulo = Label(text = "Liquidador",
@@ -127,7 +127,7 @@ class MainScreen(Screen):
 
         self.add_widget(self.contenedor)
     
-    def _update_bg_rect(self, *args):
+    def _actualizar_background(self, *args):
         self.bg_rect.pos = self.contenedor_inputs.pos
         self.bg_rect.size = self.contenedor_inputs.size
         
