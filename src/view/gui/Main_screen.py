@@ -2,6 +2,7 @@ import sys
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
 from model import liquidacion_total
+from view.gui.own_classes import BackgroundLabel
 
 from kivy.uix.screenmanager import Screen
 from kivy.uix.boxlayout import BoxLayout
@@ -25,12 +26,11 @@ class MainScreen(Screen):
         self.contenedor_inputs.bind(size = self._actualizar_background, pos = self._actualizar_background)
 
 
-        self.titulo = Label(text = "Liquidador",
-                       font_size = 55,
-                       height = 150,
-                       size_hint = (1, None),
-                       color = (0.17, 0.24, 0.31, 1),
-                       background_color = "green")
+        self.titulo = BackgroundLabel(text = "Liquidador",
+                                      font_size = 55,
+                                      height = 150,
+                                      size_hint = (1, None),
+                                      background_color = (0.17, 0.24, 0.31, 1))
         self.contenedor.add_widget(self.titulo)
 
 
@@ -56,7 +56,10 @@ class MainScreen(Screen):
 
         self.fecha_fin = TextInput(size_hint = (1 , None),
                               height = 100,
-                              font_size = 25)
+                              font_size = 25,
+                              foreground_color = (1,1,1,1))
+        self.fecha_fin.background_active = ""
+        self.fecha_fin.background_color = (0,0,0,1)
         self.contenedor_inputs.add_widget(self.fecha_fin)
 
 
