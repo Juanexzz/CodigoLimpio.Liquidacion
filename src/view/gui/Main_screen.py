@@ -9,7 +9,6 @@ from kivy.uix.gridlayout import GridLayout
 from kivy.uix.label import Label
 from kivy.uix.textinput import TextInput
 from kivy.uix.button import Button
-
 from kivy.graphics import Color, Rectangle
 
 class MainScreen(Screen):
@@ -20,7 +19,7 @@ class MainScreen(Screen):
         self.contenedor_inputs = GridLayout(cols = 2)
 
         with self.contenedor_inputs.canvas.before:
-            Color(0.4, 0.9, 0.4, 1)  
+            Color(0.96, 0.96, 0.98, 1)  
             self.bg_rect = Rectangle(pos=self.contenedor_inputs.pos, size=self.contenedor_inputs.size)
         
         self.contenedor_inputs.bind(size = self._actualizar_background, pos = self._actualizar_background)
@@ -29,7 +28,9 @@ class MainScreen(Screen):
         self.titulo = Label(text = "Liquidador",
                        font_size = 55,
                        height = 150,
-                       size_hint = (1, None))
+                       size_hint = (1, None),
+                       color = (0.17, 0.24, 0.31, 1),
+                       background_color = "green")
         self.contenedor.add_widget(self.titulo)
 
 
@@ -127,7 +128,8 @@ class MainScreen(Screen):
 
         boton_guardar_datos = Button(text = "Calcular", 
                                      font_size = 30,
-                                     size_hint = (1, 0.15))
+                                     size_hint = (1, 0.15),
+                                     background_color = (0.15, 0.68, 0.38, 1))
         boton_guardar_datos.bind(on_press = self.calcular)
         self.contenedor.add_widget(boton_guardar_datos)
 
