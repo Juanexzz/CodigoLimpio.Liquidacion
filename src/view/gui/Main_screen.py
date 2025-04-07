@@ -20,7 +20,7 @@ class MainScreen(Screen):
         self.contenedor_inputs = GridLayout(cols = 2)
 
         with self.contenedor_inputs.canvas.before:
-            Color(0.96, 0.96, 0.98, 1)  
+            Color(0.98, 0.98, 0.98, 1)  
             self.bg_rect = Rectangle(pos=self.contenedor_inputs.pos, size=self.contenedor_inputs.size)
         
         self.contenedor_inputs.bind(size = self._actualizar_background, pos = self._actualizar_background)
@@ -30,101 +30,112 @@ class MainScreen(Screen):
                                       font_size = 55,
                                       height = 150,
                                       size_hint = (1, None),
-                                      background_color = (0.17, 0.24, 0.31, 1))
+                                      background_color = (0.25, 0.25, 0.3, 1))
         self.contenedor.add_widget(self.titulo)
 
 
-        label_fecha_inicio = Label(text = "Ingrese la fecha de inicio:",
+        label_fecha_inicio = BackgroundLabel(text = "Ingrese la fecha de inicio:",
                                    size_hint = (1 , None),
                                    height = 100,
                                    font_size = 30,
-                                   color = "black")
+                                   color = "black",
+                                   background_color = (0.2, 0.2, 0.2, 1))
         self.contenedor_inputs.add_widget(label_fecha_inicio)
 
         self.fecha_inicio = TextInput(size_hint = (1 , None),
                                  height = 100,
-                                 font_size = 25)
+                                 font_size = 25,
+                                 foreground_color = (0.15, 0.15, 0.15, 1))
         self.contenedor_inputs.add_widget(self.fecha_inicio)
 
 
-        label_fecha_fin = Label(text = "Ingrese la fecha de fin:",
+        label_fecha_fin = BackgroundLabel(text = "Ingrese la fecha de fin:",
                                 size_hint = (1 , None),
                                 height = 100,
                                 font_size = 30,
-                                color = "black")
+                                color = "black",
+                                background_color = (0.2, 0.2, 0.2, 1))
         self.contenedor_inputs.add_widget(label_fecha_fin)
 
         self.fecha_fin = TextInput(size_hint = (1 , None),
                               height = 100,
                               font_size = 25,
-                              foreground_color = (1,1,1,1))
-        self.fecha_fin.background_active = ""
-        self.fecha_fin.background_color = (0,0,0,1)
+                              foreground_color = (0.15, 0.15, 0.15, 1))
         self.contenedor_inputs.add_widget(self.fecha_fin)
 
 
-        label_salario_auxilio = Label(text = "Por favor ingrese su salario con auxilio:",
+        label_salario_auxilio = BackgroundLabel(text = "Por favor ingrese su salario con auxilio:",
                                       size_hint = (1 , None),
                                       height = 100,
                                       font_size = 30,
-                                      color = "black")
+                                      color = "black",
+                                      background_color = (0.2, 0.2, 0.2, 1))
         self.contenedor_inputs.add_widget(label_salario_auxilio)
 
         self.salario_auxilio = TextInput(size_hint = (1 , None),
                                     height = 100,
-                                    font_size = 25)
+                                    font_size = 25,
+                                    foreground_color = (0.15, 0.15, 0.15, 1))
         self.contenedor_inputs.add_widget(self.salario_auxilio)
 
 
-        lable_salario_sin_auxilio = Label(text = "Ingrese su salario sin auxilio:",
+        lable_salario_sin_auxilio = BackgroundLabel(text = "Ingrese su salario sin auxilio:",
                                           size_hint = (1 , None),
                                           height = 100,
                                           font_size = 30,
-                                          color = "black")
+                                          color = "black",
+                                          background_color = (0.2, 0.2, 0.2, 1))
         self.contenedor_inputs.add_widget(lable_salario_sin_auxilio)
 
         self.salario_sin_auxilio = TextInput(size_hint = (1 , None),
                                         height = 100,
-                                        font_size = 25)
+                                        font_size = 25,
+                                        foreground_color = (0.15, 0.15, 0.15, 1))
         self.contenedor_inputs.add_widget(self.salario_sin_auxilio)
 
 
-        label_dias_suspension = Label(text = "Ingrese sus dias de suspension:", 
+        label_dias_suspension = BackgroundLabel(text = "Ingrese sus dias de suspension:", 
                                       size_hint = (1 , None),
                                       height = 100,
                                       font_size = 30,
-                                      color = "black")
+                                      color = "black",
+                                      background_color = (0.2, 0.2, 0.2, 1))
         self.contenedor_inputs.add_widget(label_dias_suspension)
 
         self.dias_suspension = TextInput(size_hint = (1 , None),
                                     height = 100,
-                                    font_size = 25)
+                                    font_size = 25,
+                                    foreground_color = (0.15, 0.15, 0.15, 1))
         self.contenedor_inputs.add_widget(self.dias_suspension)
 
 
-        label_dias_indemnizacion = Label(text = "Ingrese sus dias de indemnizacion:",
+        label_dias_indemnizacion = BackgroundLabel(text = "Ingrese sus dias de indemnizacion:",
                                          size_hint = (1 , None),
                                          height = 100,
                                          font_size = 30,
-                                         color = "black")
+                                         color = "black",
+                                         background_color = (0.2, 0.2, 0.2, 1))
         self.contenedor_inputs.add_widget(label_dias_indemnizacion)
 
         self.dias_indemnizacion = TextInput(size_hint = (1 , None),
                                        height = 100,
-                                       font_size = 25)
+                                       font_size = 25,
+                                       foreground_color = (0.15, 0.15, 0.15, 1))
         self.contenedor_inputs.add_widget(self.dias_indemnizacion)
 
 
-        label_salario_variable = Label(text = "Ingrese su salario:",
+        label_salario_variable = BackgroundLabel(text = "Ingrese su salario:",
                                        size_hint = (1 , None),
                                        height = 100,
                                        font_size = 30,
-                                       color = "black")
+                                       color = "black",
+                                       background_color = (0.2, 0.2, 0.2, 1))
         self.contenedor_inputs.add_widget(label_salario_variable)
 
         self.salario_variable = TextInput(size_hint = (1 , None),
                                      height = 100,
-                                     font_size = 25)
+                                     font_size = 25,
+                                     foreground_color = (0.15, 0.15, 0.15, 1))
         self.contenedor_inputs.add_widget(self.salario_variable)
 
         self.contenedor.add_widget(self.contenedor_inputs)
@@ -132,7 +143,7 @@ class MainScreen(Screen):
         boton_guardar_datos = Button(text = "Calcular", 
                                      font_size = 30,
                                      size_hint = (1, 0.15),
-                                     background_color = (0.15, 0.68, 0.38, 1))
+                                     background_color = (0.18, 0.44, 0.75, 1))
         boton_guardar_datos.bind(on_press = self.calcular)
         self.contenedor.add_widget(boton_guardar_datos)
 
