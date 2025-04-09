@@ -156,7 +156,6 @@ class MainScreen(Screen):
         
     def calcular(self, sender):
         try:
-            self.validar_datos()
             fecha_inicio = self.fecha_inicio.text
             fecha_fin = self.fecha_fin.text
             salario_auxilio = float(self.salario_auxilio.text)
