@@ -155,8 +155,8 @@ class MainScreen(Screen):
         
     def calcular(self, sender):
         try:
-            fecha_inicio = float(self.fecha_inicio.text)
-            fecha_fin = float(self.fecha_fin.text)
+            fecha_inicio = self.fecha_inicio.text
+            fecha_fin = self.fecha_fin.text
             salario_auxilio = float(self.salario_auxilio.text)
             salario_sin_auxilio = float(self.salario_sin_auxilio.text)
             dias_suspension = float(self.dias_suspension.text)
