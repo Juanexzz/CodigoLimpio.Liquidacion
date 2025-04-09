@@ -4,12 +4,15 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '.
 from model import liquidacion_total
 from view.gui.own_classes import BackgroundLabel
 
+from datetime import datetime
+
 from kivy.uix.screenmanager import Screen
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.textinput import TextInput
 from kivy.uix.button import Button
 from kivy.graphics import Color, Rectangle
+from kivy.uix.label import Label
 from kivy.uix.popup import Popup
 
 class MainScreen(Screen):
@@ -148,13 +151,15 @@ class MainScreen(Screen):
         self.contenedor.add_widget(self.boton_guardar_datos)
 
         self.add_widget(self.contenedor)
-    
+
     def _actualizar_background(self, *args):
         self.bg_rect.pos = self.contenedor_inputs.pos
         self.bg_rect.size = self.contenedor_inputs.size
-        
+
     def calcular(self, sender):
         try:
+            self.validar()
+
             fecha_inicio = self.fecha_inicio.text
             fecha_fin = self.fecha_fin.text
             salario_auxilio = float(self.salario_auxilio.text)
@@ -171,12 +176,45 @@ class MainScreen(Screen):
                         "vacaciones": str(round(liquidacion.calcular_vacaciones(), 2)),
                         "indemnizacion": str(round(liquidacion.calcular_indemnizacion(), 2)),
                         "total_liquidacion": str(round(liquidacion.calcular_liquidacion_total(), 2))}
-            
+
             self.manager.get_screen("second").actualizar_resultados(resultados)
             self.cambiar_ventana()
         except Exception as ex:
-            self.boton_guardar_datos.text = "Esta fallando"
+            self.mostrar_error(ex)
 
+    def mostrar_error(self, err):
+        contenido = GridLayout(cols=1)
+        contenido.add_widget(Label(text=str(err)))
+
+        cerrar = Button(text="Cerrar" )
+        contenido.add_widget( cerrar )
+
+        popup = Popup(title="Error",content=contenido)
+        cerrar.bind( on_press=popup.dismiss)
+
+        popup.open()
+
+    def validar(self):
+        try:
+            datetime.strptime(self.fecha_inicio.text, "%d/%m/%Y")
+            datetime.strptime(self.fecha_fin.text, "%d/%m/%Y")
+        except ValueError:
+            raise liquidacion_total.ErrorLiquidacion("Error de formato. El formato de la fecha es incorrecto. debe ser dia/mes/año de la siguiente forma dd/mm/yyyy")
+
+        if not self.salario_auxilio.text.isnumeric():
+            raise liquidacion_total.ErrorLiquidacion("El salario con auxilio no puede estar vacio o no es un numero")
+
+        if not self.salario_sin_auxilio.text.isnumeric():
+            raise liquidacion_total.ErrorLiquidacion("Salario incorrecto. El salario sin auxilio debe ser mayor o igual a 1,300,000, por favor ingrese un salario igual o mayor")
+
+        if not self.dias_suspension.text.isnumeric():
+            raise liquidacion_total.ErrorLiquidacion("Los dias de suspension no pueden estar vacios o no son un numero")
+
+        if not self.dias_indemnizacion.text.isnumeric():
+            raise liquidacion_total.ErrorLiquidacion("Los dias de indemnizacion no pueden estar vacios o no son un numero")
+
+        if not self.salario_variable.text.isnumeric():
+            raise liquidacion_total.ErrorLiquidacion("El salario variable debe ser un numero mayor que 0")
 
     def cambiar_ventana(self):
         self.manager.current = "second"

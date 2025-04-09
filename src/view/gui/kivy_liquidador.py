@@ -3,7 +3,7 @@ from Second_screen import SecondScreen
 
 from kivy.app import App
 from kivy.uix.screenmanager import ScreenManager
-        
+
 class liquidadorLaboral(App):
     def build(self):
         sm = ScreenManager()
@@ -13,4 +13,3 @@ class liquidadorLaboral(App):
 
 if __name__ == "__main__":
     liquidadorLaboral().run()
-

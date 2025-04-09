@@ -11,8 +11,7 @@ class BackgroundLabel(Label):
             self.bg_color = Color(*self.background_color)
             self.bg_rect = Rectangle(pos = self.pos, size = self.size)
         self.bind(pos = self._update_bg, size = self._update_bg)
-    
+
     def _update_bg(self, *args):
         self.bg_rect.pos = self.pos
         self.bg_rect.size = self.size
-
