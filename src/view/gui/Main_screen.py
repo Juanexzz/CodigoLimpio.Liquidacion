@@ -11,6 +11,7 @@ from kivy.uix.label import Label
 from kivy.uix.textinput import TextInput
 from kivy.uix.button import Button
 from kivy.graphics import Color, Rectangle
+from kivy.uix.popup import Popup
 
 class MainScreen(Screen):
     
@@ -155,6 +156,7 @@ class MainScreen(Screen):
         
     def calcular(self, sender):
         try:
+            self.validar_datos()
             fecha_inicio = self.fecha_inicio.text
             fecha_fin = self.fecha_fin.text
             salario_auxilio = float(self.salario_auxilio.text)
@@ -176,6 +178,7 @@ class MainScreen(Screen):
             self.cambiar_ventana()
         except Exception as ex:
             self.boton_guardar_datos.text = "Esta fallando"
+
 
     def cambiar_ventana(self):
         self.manager.current = "second"
