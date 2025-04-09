@@ -38,7 +38,7 @@ class MainScreen(Screen):
                                    size_hint = (1 , None),
                                    height = 100,
                                    font_size = 30,
-                                   color = "black",
+                                   color = "white",
                                    background_color = (0.2, 0.2, 0.2, 1))
         self.contenedor_inputs.add_widget(label_fecha_inicio)
 
@@ -53,7 +53,7 @@ class MainScreen(Screen):
                                 size_hint = (1 , None),
                                 height = 100,
                                 font_size = 30,
-                                color = "black",
+                                color = "white",
                                 background_color = (0.2, 0.2, 0.2, 1))
         self.contenedor_inputs.add_widget(label_fecha_fin)
 
@@ -68,7 +68,7 @@ class MainScreen(Screen):
                                       size_hint = (1 , None),
                                       height = 100,
                                       font_size = 30,
-                                      color = "black",
+                                      color = "white",
                                       background_color = (0.2, 0.2, 0.2, 1))
         self.contenedor_inputs.add_widget(label_salario_auxilio)
 
@@ -83,7 +83,7 @@ class MainScreen(Screen):
                                           size_hint = (1 , None),
                                           height = 100,
                                           font_size = 30,
-                                          color = "black",
+                                          color = "white",
                                           background_color = (0.2, 0.2, 0.2, 1))
         self.contenedor_inputs.add_widget(lable_salario_sin_auxilio)
 
@@ -98,7 +98,7 @@ class MainScreen(Screen):
                                       size_hint = (1 , None),
                                       height = 100,
                                       font_size = 30,
-                                      color = "black",
+                                      color = "white",
                                       background_color = (0.2, 0.2, 0.2, 1))
         self.contenedor_inputs.add_widget(label_dias_suspension)
 
@@ -113,7 +113,7 @@ class MainScreen(Screen):
                                          size_hint = (1 , None),
                                          height = 100,
                                          font_size = 30,
-                                         color = "black",
+                                         color = "white",
                                          background_color = (0.2, 0.2, 0.2, 1))
         self.contenedor_inputs.add_widget(label_dias_indemnizacion)
 
@@ -128,7 +128,7 @@ class MainScreen(Screen):
                                        size_hint = (1 , None),
                                        height = 100,
                                        font_size = 30,
-                                       color = "black",
+                                       color = "white",
                                        background_color = (0.2, 0.2, 0.2, 1))
         self.contenedor_inputs.add_widget(label_salario_variable)
 
