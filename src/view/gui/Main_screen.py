@@ -140,12 +140,12 @@ class MainScreen(Screen):
 
         self.contenedor.add_widget(self.contenedor_inputs)
 
-        boton_guardar_datos = Button(text = "Calcular", 
+        self.boton_guardar_datos = Button(text = "Calcular", 
                                      font_size = 30,
                                      size_hint = (1, 0.15),
                                      background_color = (0.18, 0.44, 0.75, 1))
-        boton_guardar_datos.bind(on_press = self.calcular)
-        self.contenedor.add_widget(boton_guardar_datos)
+        self.boton_guardar_datos.bind(on_press = self.calcular)
+        self.contenedor.add_widget(self.boton_guardar_datos)
 
         self.add_widget(self.contenedor)
     
@@ -154,25 +154,28 @@ class MainScreen(Screen):
         self.bg_rect.size = self.contenedor_inputs.size
         
     def calcular(self, sender):
-        fecha_inicio = self.fecha_inicio.text
-        fecha_fin = self.fecha_fin.text
-        salario_auxilio = self.salario_auxilio.text
-        salario_sin_auxilio = self.salario_sin_auxilio.text
-        dias_suspension = self.dias_suspension.text
-        dias_indemnizacion = self.dias_indemnizacion.text
-        salario_variable = self.salario_variable.text
+        try:
+            fecha_inicio = float(self.fecha_inicio.text)
+            fecha_fin = float(self.fecha_fin.text)
+            salario_auxilio = float(self.salario_auxilio.text)
+            salario_sin_auxilio = float(self.salario_sin_auxilio.text)
+            dias_suspension = float(self.dias_suspension.text)
+            dias_indemnizacion = float(self.dias_indemnizacion.text)
+            salario_variable = float(self.salario_variable.text)
 
-        liquidacion = liquidacion_total.LiquidacionEmpleado(salario_auxilio, salario_sin_auxilio, salario_variable, fecha_inicio, fecha_fin, dias_suspension, dias_indemnizacion)
+            liquidacion = liquidacion_total.LiquidacionEmpleado(salario_auxilio, salario_sin_auxilio, salario_variable, fecha_inicio, fecha_fin, dias_suspension, dias_indemnizacion)
 
-        resultados = {"prima": str(round(liquidacion.calcular_prima(), 2)),
-                      "cesantias": str(round(liquidacion.calcular_cesantias(), 2)),
-                      "intereses_cesantias": str(round(liquidacion.calcular_intereses_cesantias(), 2)),
-                      "vacaciones": str(round(liquidacion.calcular_vacaciones(), 2)),
-                      "indemnizacion": str(round(liquidacion.calcular_indemnizacion(), 2)),
-                      "total_liquidacion": str(round(liquidacion.calcular_liquidacion_total(), 2))}
-        
-        self.manager.get_screen("second").actualizar_resultados(resultados)
-        self.cambiar_ventana()
+            resultados = {"prima": str(round(liquidacion.calcular_prima(), 2)),
+                        "cesantias": str(round(liquidacion.calcular_cesantias(), 2)),
+                        "intereses_cesantias": str(round(liquidacion.calcular_intereses_cesantias(), 2)),
+                        "vacaciones": str(round(liquidacion.calcular_vacaciones(), 2)),
+                        "indemnizacion": str(round(liquidacion.calcular_indemnizacion(), 2)),
+                        "total_liquidacion": str(round(liquidacion.calcular_liquidacion_total(), 2))}
+            
+            self.manager.get_screen("second").actualizar_resultados(resultados)
+            self.cambiar_ventana()
+        except Exception as ex:
+            self.boton_guardar_datos.text = "Esta fallando"
 
     def cambiar_ventana(self):
         self.manager.current = "second"
