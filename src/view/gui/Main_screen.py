@@ -11,16 +11,21 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.textinput import TextInput
 from kivy.uix.button import Button
-from kivy.graphics import Color, Rectangle
 from kivy.uix.label import Label
 from kivy.uix.popup import Popup
 
+from kivy.graphics import Color, Rectangle
+from kivy.metrics import dp
 class MainScreen(Screen):
     
     def __init__(self, **kw):
         super().__init__(**kw)
-        self.contenedor = BoxLayout(orientation = "vertical")
-        self.contenedor_inputs = GridLayout(cols = 2)
+        self.contenedor = BoxLayout(orientation = "vertical", 
+                                    spacing = dp(5))
+        self.contenedor_inputs = GridLayout(cols = 2,
+                                            spacing = dp(8),
+                                            padding = dp(11),
+                                            size_hint = (1, 1))
 
         with self.contenedor_inputs.canvas.before:
             Color(0.98, 0.98, 0.98, 1)  
@@ -32,7 +37,7 @@ class MainScreen(Screen):
         self.titulo = BackgroundLabel(text = "Liquidador",
                                       font_size = 55,
                                       height = 150,
-                                      size_hint = (1, None),
+                                      size_hint = (1, 0.15),
                                       background_color = (0.25, 0.25, 0.3, 1))
         self.contenedor.add_widget(self.titulo)
 
@@ -144,8 +149,8 @@ class MainScreen(Screen):
         self.contenedor.add_widget(self.contenedor_inputs)
 
         self.boton_guardar_datos = Button(text = "Calcular", 
-                                     font_size = 30,
-                                     size_hint = (1, 0.15),
+                                     font_size = 35,
+                                     size_hint = (1, 0.10),
                                      background_color = (0.18, 0.44, 0.75, 1))
         self.boton_guardar_datos.bind(on_press = self.calcular)
         self.contenedor.add_widget(self.boton_guardar_datos)
@@ -184,13 +189,13 @@ class MainScreen(Screen):
 
     def mostrar_error(self, err):
         contenido = GridLayout(cols=1)
-        contenido.add_widget(Label(text=str(err)))
+        contenido.add_widget(Label(text = str(err)))
 
-        cerrar = Button(text="Cerrar" )
+        cerrar = Button(text = "Cerrar" )
         contenido.add_widget( cerrar )
 
-        popup = Popup(title="Error",content=contenido)
-        cerrar.bind( on_press=popup.dismiss)
+        popup = Popup(title = "Error",content=contenido)
+        cerrar.bind( on_press = popup.dismiss)
 
         popup.open()
 
