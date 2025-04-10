@@ -5,14 +5,19 @@ from kivy.uix.label import Label
 from kivy.uix.textinput import TextInput
 from kivy.uix.button import Button
 from kivy.graphics import Color, Rectangle
+from kivy.metrics import dp
 
 from view.gui.own_classes import BackgroundLabel
 
 class SecondScreen(Screen):
     def __init__(self, **kw):
         super().__init__(**kw)
-        self.contenedor = BoxLayout(orientation = "vertical")
-        self.contenedor_labels = GridLayout(cols = 2)
+        self.contenedor = BoxLayout(orientation = "vertical",
+                                    spacing = dp(5))
+        self.contenedor_labels = GridLayout(cols = 2,
+                                            spacing = dp(13),
+                                            padding = dp(15),
+                                            size_hint = (1, 1))
 
         with self.contenedor_labels.canvas.before:
             Color(0.98, 0.98, 0.98, 1)  
