@@ -9,7 +9,8 @@ class ErrorLiquidacion (Exception):
     ...
 
 class LiquidacionEmpleado:
-    def __init__(self, salario_auxilio, salario_sin_auxilio, salario_variable, fecha_inicio, fecha_fin, dias_suspension, dias_indemnizacion):
+    def __init__(self, salario_auxilio: int, salario_sin_auxilio: int, salario_variable: int, fecha_inicio: int, fecha_fin: int, dias_suspension: int, dias_indemnizacion: int):
+
 
         if salario_sin_auxilio < salario_minimo:
             raise ErrorLiquidacion("Salario incorrecto. El salario sin auxilio debe ser mayor o igual a 1,300,000, por favor ingrese un salario igual o mayor")
@@ -25,6 +26,8 @@ class LiquidacionEmpleado:
         
         if self.fecha_inicio > self.fecha_fin:
             raise ErrorLiquidacion("Fecha incorrecta. La fecha de inicio no puede ser posterior a la fecha de fin. Por favor ingrese fechas validas")
+        
+
 
         self.salario_auxilio = salario_auxilio + salario_variable  # Se suma el salario variable
         self.salario_sin_auxilio = salario_sin_auxilio
