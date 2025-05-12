@@ -7,6 +7,9 @@ import psycopg2
 from model.empleado_liquidacion import EmpleadoLiquidacion  
 import SecretConfig
 
+def ruta_sql(nombre_archivo):
+    return os.path.abspath(os.path.join(os.path.dirname(__file__), "../../sql", nombre_archivo))
+
 
 class LiquidacionesController:
 
@@ -14,7 +17,8 @@ class LiquidacionesController:
     def crear_tabla():
         cursor = LiquidacionesController.obtener_cursor()
 
-        with open("sql/crear-liquidaciones.sql", "r") as archivo:
+        with open(ruta_sql("crear-liquidaciones.sql"), "r") as archivo:
+
             consulta = archivo.read()
 
         cursor.execute(consulta)
@@ -24,7 +28,8 @@ class LiquidacionesController:
     def borrar_tabla():
         cursor = LiquidacionesController.obtener_cursor()
 
-        with open("sql/borrar-liquidaciones.sql", "r") as archivo:
+        with open(ruta_sql("borrar-liquidaciones.sql"), "r") as archivo:
+
             consulta = archivo.read()
 
         cursor.execute(consulta)
@@ -35,7 +40,8 @@ class LiquidacionesController:
         """Inserta una instancia de EmpleadoLiquidacion en la base de datos y retorna el ID"""
         cursor = LiquidacionesController.obtener_cursor()
 
-        with open("sql/insertar-liquidacion.sql", "r") as archivo:
+        with open(ruta_sql("insertar-liquidacion.sql"), "r") as archivo:
+
             consulta = archivo.read()
 
         datos = (
@@ -59,7 +65,8 @@ class LiquidacionesController:
         """Devuelve una instancia de EmpleadoLiquidacion dado su ID"""
         cursor = LiquidacionesController.obtener_cursor()
 
-        with open("sql/buscar-liquidacion-por-id.sql", "r") as archivo:
+        with open(ruta_sql("buscar-liquidacion-por-id.sql"), "r") as archivo:
+
             consulta = archivo.read()
 
         cursor.execute(consulta, (id_liquidacion,))
@@ -82,7 +89,8 @@ class LiquidacionesController:
         """Elimina una fila por ID"""
         cursor = LiquidacionesController.obtener_cursor()
 
-        with open("sql/borrar-liquidacion-por-id.sql", "r") as archivo:
+        with open(ruta_sql("borrar-liquidacion-por-id.sql"), "r") as archivo:
+
             consulta = archivo.read()
 
         cursor.execute(consulta, (id_liquidacion,))
@@ -108,7 +116,8 @@ class LiquidacionesController:
             raise Exception("Las fechas de inicio y fin no pueden ser vacías.")
 
         # Leer y ejecutar la consulta SQL desde archivo
-        with open("sql/modificar-liquidacion-por-id.sql", "r") as archivo:
+        with open(ruta_sql("modificar-liquidacion-por-id.sql"), "r") as archivo:
+
             consulta = archivo.read()
 
         datos = (

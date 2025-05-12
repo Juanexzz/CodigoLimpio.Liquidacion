@@ -5,37 +5,41 @@ dias_al_mes = 30
 dias_al_año = 360
 porcentaje_interes = 0.12
 dias_de_vacaciones = 15
+
 class ErrorLiquidacion (Exception):
     ...
 
+
 class LiquidacionEmpleado:
-    def __init__(self, salario_auxilio: int, salario_sin_auxilio: int, salario_variable: int, fecha_inicio: int, fecha_fin: int, dias_suspension: int, dias_indemnizacion: int):
-
-
-        if salario_sin_auxilio < salario_minimo:
-            raise ErrorLiquidacion("Salario incorrecto. El salario sin auxilio debe ser mayor o igual a 1,300,000, por favor ingrese un salario igual o mayor")
-        
-        if salario_variable < 0:
-            raise ErrorLiquidacion("Error de salario variable. El salario variable no puede ser negativo, ingrese un numero mayor que 0")
-        
-        try:
-            self.fecha_inicio = datetime.strptime(fecha_inicio, "%d/%m/%Y")
-            self.fecha_fin = datetime.strptime(fecha_fin, "%d/%m/%Y")
-        except ValueError:
-            raise ErrorLiquidacion("Error de formato. El formato de la fecha es incorrecto. debe ser dia/mes/año de la siguiente forma dd/mm/yyyy")
-        
-        if self.fecha_inicio > self.fecha_fin:
-            raise ErrorLiquidacion("Fecha incorrecta. La fecha de inicio no puede ser posterior a la fecha de fin. Por favor ingrese fechas validas")
-        
-
-
-        self.salario_auxilio = salario_auxilio + salario_variable  # Se suma el salario variable
+    def __init__(self, salario_auxilio, salario_sin_auxilio, salario_variable, fecha_inicio, fecha_fin, dias_suspension, dias_indemnizacion):
+        self.salario_auxilio = salario_auxilio
         self.salario_sin_auxilio = salario_sin_auxilio
-        self.fecha_inicio = datetime.strptime(fecha_inicio, "%d/%m/%Y")
-        self.fecha_fin = datetime.strptime(fecha_fin, "%d/%m/%Y")
-        self.dias_trabajados = max((self.fecha_fin - self.fecha_inicio).days - dias_suspension, 0)  # Se restan días de suspensión
-        self.salario_diario = salario_sin_auxilio / dias_al_mes
+        self.salario_variable = salario_variable
+
+        # Verificar si fecha_inicio es una cadena (str) o un objeto datetime
+        if isinstance(fecha_inicio, str):
+            self.fecha_inicio = datetime.strptime(fecha_inicio, "%d/%m/%Y")
+        elif isinstance(fecha_inicio, datetime):
+            self.fecha_inicio = fecha_inicio
+        else:
+            raise ValueError("fecha_inicio debe ser un objeto datetime o una cadena con formato dd/mm/yyyy")
+
+        # Verificar si fecha_fin es una cadena (str) o un objeto datetime
+        if isinstance(fecha_fin, str):
+            self.fecha_fin = datetime.strptime(fecha_fin, "%d/%m/%Y")
+        elif isinstance(fecha_fin, datetime):
+            self.fecha_fin = fecha_fin
+        else:
+            raise ValueError("fecha_fin debe ser un objeto datetime o una cadena con formato dd/mm/yyyy")
+
+        self.dias_suspension = dias_suspension
         self.dias_indemnizacion = dias_indemnizacion
+
+        # Calcular días trabajados, considerando la suspensión
+        self.dias_trabajados = max((self.fecha_fin - self.fecha_inicio).days - self.dias_suspension, 0)
+
+        # Calcular salario diario
+        self.salario_diario = self.salario_sin_auxilio / dias_al_mes
 
     def calcular_prima(self):
         return (self.salario_auxilio * self.dias_trabajados / dias_al_año)
@@ -58,4 +62,20 @@ class LiquidacionEmpleado:
         total = (self.calcular_prima() + self.calcular_cesantias() +
                  self.calcular_intereses_cesantias() + self.calcular_vacaciones() +
                  self.calcular_indemnizacion()) 
-        return (total)
+        return total
+
+    def __str__(self):
+        # Aquí mostramos los cálculos, de forma legible
+        return (f"Salario con auxilio: {self.salario_auxilio}\n"
+                f"Salario sin auxilio: {self.salario_sin_auxilio}\n"
+                f"Salario variable: {self.salario_variable}\n"
+                f"Fecha de inicio: {self.fecha_inicio.strftime('%d/%m/%Y')}\n"
+                f"Fecha de fin: {self.fecha_fin.strftime('%d/%m/%Y')}\n"
+                f"Días de suspensión: {self.dias_suspension}\n"
+                f"Días de indemnización: {self.dias_indemnizacion}\n"
+                f"Prima: {self.calcular_prima()}\n"
+                f"Cesantías: {self.calcular_cesantias()}\n"
+                f"Intereses de cesantías: {self.calcular_intereses_cesantias()}\n"
+                f"Vacaciones: {self.calcular_vacaciones()}\n"
+                f"Indemnización: {self.calcular_indemnizacion()}\n"
+                f"Total liquidación: {self.calcular_liquidacion_total()}\n")

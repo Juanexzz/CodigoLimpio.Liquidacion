@@ -30,3 +30,15 @@ class EmpleadoLiquidacion:
         assert self.dias_suspension == comparar_con.dias_suspension
         assert self.dias_indemnizacion == comparar_con.dias_indemnizacion
         return True
+    
+    def __str__(self):
+        return (
+            f"Salario con auxilio: {self.salario_auxilio}\n"
+            f"Salario sin auxilio: {self.salario_sin_auxilio}\n"
+            f"Salario variable: {self.salario_variable}\n"
+            f"Fecha de inicio: {self.fecha_inicio.strftime('%d/%m/%Y')}\n"
+            f"Fecha de fin: {self.fecha_fin.strftime('%d/%m/%Y')}\n"
+            f"Días de suspensión: {self.dias_suspension}\n"
+            f"Días de indemnización: {self.dias_indemnizacion}"
+        )
+    
