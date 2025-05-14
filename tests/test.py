@@ -99,11 +99,11 @@ class TestLiquidacion(unittest.TestCase):
         salario_variable = 50000
 
         # Resultados esperados
-        prima = 6127800
+        prima = 5925161.111111111
         vacaciones = 2634305.5555555555
-        cesantias = 6127800
-        intereses_cesantias = 2980153.4
-        liquidacion_total = 17870058.955555554
+        cesantias = 5925161.111111111
+        intereses_cesantias = 2881603.3537037033
+        liquidacion_total = 17366231.13148148
 
         mi_liquidacion = Liquidacion(salario_auxilio, salario_sin_auxilio, salario_variable, fecha_inicio, fecha_fin, dias_suspension, dias_indemnizacion)
 

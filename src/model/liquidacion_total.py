@@ -16,24 +16,45 @@ class LiquidacionEmpleado:
         self.salario_sin_auxilio = salario_sin_auxilio
         self.salario_variable = salario_variable
 
-        # Verificar si fecha_inicio es una cadena (str) o un objeto datetime
-        if isinstance(fecha_inicio, str):
-            self.fecha_inicio = datetime.strptime(fecha_inicio, "%d/%m/%Y")
-        elif isinstance(fecha_inicio, datetime):
-            self.fecha_inicio = fecha_inicio
-        else:
-            raise ValueError("fecha_inicio debe ser un objeto datetime o una cadena con formato dd/mm/yyyy")
+        # Validar fechas
+        try:
+            if isinstance(fecha_inicio, str):
+                self.fecha_inicio = datetime.strptime(fecha_inicio, "%d/%m/%Y")
+            elif isinstance(fecha_inicio, datetime):
+                self.fecha_inicio = fecha_inicio
+            else:
+                raise ErrorLiquidacion("Error de formato. El formato de la fecha es incorrecto. debe ser dia/mes/año de la siguiente forma dd/mm/yyyy")
 
-        # Verificar si fecha_fin es una cadena (str) o un objeto datetime
-        if isinstance(fecha_fin, str):
-            self.fecha_fin = datetime.strptime(fecha_fin, "%d/%m/%Y")
-        elif isinstance(fecha_fin, datetime):
-            self.fecha_fin = fecha_fin
-        else:
-            raise ValueError("fecha_fin debe ser un objeto datetime o una cadena con formato dd/mm/yyyy")
+            if isinstance(fecha_fin, str):
+                self.fecha_fin = datetime.strptime(fecha_fin, "%d/%m/%Y")
+            elif isinstance(fecha_fin, datetime):
+                self.fecha_fin = fecha_fin
+            else:
+                raise ErrorLiquidacion("Error de formato. El formato de la fecha es incorrecto. debe ser dia/mes/año de la siguiente forma dd/mm/yyyy")
+        except ValueError:
+            raise ErrorLiquidacion("Error de formato. El formato de la fecha es incorrecto. debe ser dia/mes/año de la siguiente forma dd/mm/yyyy")
+
+        # Validación: fecha inicio no puede ser después de fecha fin
+        if self.fecha_inicio > self.fecha_fin:
+            raise ErrorLiquidacion("Fecha incorrecta. La fecha de inicio no puede ser posterior a la fecha de fin. Por favor ingrese fechas validas")
+
+        # Validación: salario sin auxilio no puede ser menor al mínimo
+        if self.salario_sin_auxilio < salario_minimo:
+            raise ErrorLiquidacion("Salario incorrecto. El salario sin auxilio debe ser mayor o igual a 1,300,000, por favor ingrese un salario igual o mayor")
+
+        # Validación: salario variable no puede ser negativo
+        if self.salario_variable < 0:
+            raise ErrorLiquidacion("Error de salario variable. El salario variable no puede ser negativo, ingrese un numero mayor que 0")
 
         self.dias_suspension = dias_suspension
         self.dias_indemnizacion = dias_indemnizacion
+
+        # Calcular días trabajados, considerando la suspensión
+        self.dias_trabajados = max((self.fecha_fin - self.fecha_inicio).days - self.dias_suspension, 0)
+
+        # Calcular salario diario
+        self.salario_diario = self.salario_sin_auxilio / dias_al_mes
+
 
         # Calcular días trabajados, considerando la suspensión
         self.dias_trabajados = max((self.fecha_fin - self.fecha_inicio).days - self.dias_suspension, 0)
