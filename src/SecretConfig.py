@@ -1,4 +1,5 @@
-PGHOST='ingrese nombre de host'
-PGDATABASE='ingrese nombre de base de datos'
-PGUSER='ingrese nombre de usuario'
-PGPASSWORD='ingrese contraseña'
+
+PGHOST='ep-aged-glade-a41hxbt5-pooler.us-east-1.aws.neon.tech'
+PGDATABASE='neondb'
+PGUSER='neondb_owner'
+PGPASSWORD='npg_kogsQR05Ifrh'
