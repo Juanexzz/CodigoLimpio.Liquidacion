@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados de la Búsqueda</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
+        <h1 class="text-2xl font-bold mb-4 text-gray-800 text-center">Resultado de la Búsqueda</h1>
+        {% if resultado %}
+        <div class="space-y-2">
+            <p><span class="font-semibold">Salario con Auxilio:</span> {{ resultado.salario_auxilio }}</p>
+            <p><span class="font-semibold">Salario sin Auxilio:</span> {{ resultado.salario_sin_auxilio }}</p>
+            <p><span class="font-semibold">Salario Variable:</span> {{ resultado.salario_variable }}</p>
+            <p><span class="font-semibold">Fecha de Ingreso:</span> {{ resultado.fecha_inicio }}</p>
+            <p><span class="font-semibold">Fecha de Retiro:</span> {{ resultado.fecha_fin }}</p>
+            <p><span class="font-semibold">Días de Suspensión:</span> {{ resultado.dias_suspension }}</p>
+            <p><span class="font-semibold">Días de Indemnización:</span> {{ resultado.dias_indemnizacion }}</p>
+        </div>
+        {% else %}
+        <p class="text-gray-600">No se encontraron resultados para el ID proporcionado.</p>
+        {% endif %}
+        <div class="mt-6 text-center">
+            <a href="/buscar" class="text-blue-500 hover:text-blue-700 text-sm font-semibold">Volver a Buscar</a>
+            <span class="mx-2">|</span>
+            <a href="/inicio" class="text-blue-500 hover:text-blue-700 text-sm font-semibold">Volver al Inicio</a>
+        </div>
+    </div>
+</body>
+</html>
