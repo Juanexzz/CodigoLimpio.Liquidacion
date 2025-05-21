@@ -60,6 +60,47 @@ Para que la funcionalidad de base de datos funcione correctamente:
    ```
 
 ---
+## Ejecución Local web
+
+Para ejecutar la aplicación en tu entorno local:
+
+1.  Abre tu terminal o símbolo del sistema.
+2.  Navega hasta el directorio raíz del proyecto (donde se encuentra el archivo `app.py`).
+3.  Ejecuta el siguiente comando:
+    ```bash
+    python app.py
+    ```
+4.  Una vez que el servidor de Flask se inicie, podrás acceder a la aplicación abriendo tu navegador web y dirigiéndote a la siguiente dirección:
+    ```
+    [http://127.0.0.1:5000/](http://127.0.0.1:5000/)
+    ```
+
+## Configuración de la Base de Datos (Para una Base de Datos Vacía)
+
+Estos pasos te guiarán para conectar la aplicación a una base de datos PostgreSQL vacía y configurar las tablas necesarias:
+
+1.  **Requisitos Previos:**
+    * Asegúrate de tener PostgreSQL instalado y en ejecución en tu sistema.
+    * Crea una base de datos vacía en PostgreSQL que utilizarás para este proyecto.
+
+2.  **Configuración de las Credenciales:**
+    * Localiza el archivo `secretconfig.py` en la raíz del proyecto.
+    * Edita este archivo con los detalles de conexión a tu base de datos PostgreSQL. Reemplaza los valores placeholder con tu información real:
+        ```python
+        PGHOST='tu_nombre_de_host'
+        PGDATABASE='el_nombre_de_tu_base_de_datos'
+        PGUSER='tu_nombre_de_usuario'
+        PGPASSWORD='tu_contraseña'
+        ```
+        Guarda los cambios en `secretconfig.py`.
+
+3.  **Creación de las Tablas:**
+    * Desde la raíz del proyecto (la misma ubicación donde está `app.py`), ejecuta el siguiente comando para correr los tests SQL. Estos tests están diseñados para crear las tablas necesarias en la base de datos configurada:
+        ```bash
+        python -m unittest tests/test_sql.py
+        ```
+
+    Tras completar estos pasos, tu aplicación debería estar conectada a la base de datos y las tablas necesarias deberían haber sido creadas.
 
 ## ⌨️ Uso Interfaz por Consola
 
