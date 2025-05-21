@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modificar Registro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Estilos personalizados para la fuente Inter */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-lg">
+        <h1 class="text-3xl font-bold mb-6 text-gray-800 text-center">Modificar Registro</h1>
+        <form action="/modificar" method="post" class="space-y-4">
+            <div class="mb-6 p-4 bg-yellow-50 border border-yellow-200 rounded-md">
+                <label for="id_modificar" class="block text-yellow-800 text-sm font-bold mb-2">ID del registro a modificar:</label>
+                <input type="text" id="id_modificar" name="id_modificar" required placeholder="Ingrese el ID del registro" class="shadow appearance-none border border-yellow-300 rounded-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent">
+            </div>
+
+            <h2 class="text-xl font-semibold mb-4 text-gray-700">Nuevos datos (dejar en blanco si no se modifica)</h2>
+
+            <div>
+                <label for="sueldo" class="block text-gray-700 text-sm font-bold mb-2">Sueldo:</label>
+                <input type="number" id="sueldo" name="sueldo" step="0.01" placeholder="Ej: 1500.00" class="shadow appearance-none border rounded-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent">
+            </div>
+            <div>
+                <label for="sueldo_auxilio" class="block text-gray-700 text-sm font-bold mb-2">Sueldo con Auxilio:</label>
+                <input type="number" id="sueldo_auxilio" name="sueldo_auxilio" step="0.01" placeholder="Ej: 1600.00" class="shadow appearance-none border rounded-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent">
+            </div>
+            <div>
+                <label for="fecha_ingreso" class="block text-gray-700 text-sm font-bold mb-2">Fecha de Ingreso:</label>
+                <input type="date" id="fecha_ingreso" name="fecha_ingreso" class="shadow appearance-none border rounded-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent">
+            </div>
+            <div>
+                <label for="fecha_retiro" class="block text-gray-700 text-sm font-bold mb-2">Fecha de Retiro:</label>
+                <input type="date" id="fecha_retiro" name="fecha_retiro" class="shadow appearance-none border rounded-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent">
+            </div>
+            <div>
+                <label for="salario_variable" class="block text-gray-700 text-sm font-bold mb-2">Salario Variable:</label>
+                <input type="number" id="salario_variable" name="salario_variable" step="0.01" placeholder="Ej: 200.00" class="shadow appearance-none border rounded-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent">
+            </div>
+            <div>
+                <label for="dias_suspension" class="block text-gray-700 text-sm font-bold mb-2">Días de Suspensión:</label>
+                <input type="number" id="dias_suspension" name="dias_suspension" placeholder="Ej: 5" class="shadow appearance-none border rounded-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent">
+            </div>
+            <div>
+                <label for="dias_indemnizacion" class="block text-gray-700 text-sm font-bold mb-2">Días de Indemnización:</label>
+                <input type="number" id="dias_indemnizacion" name="dias_indemnizacion" placeholder="Ej: 30" class="shadow appearance-none border rounded-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent">
+            </div>
+            <button type="submit" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-md w-full transition duration-300 ease-in-out transform hover:scale-105">
+                Modificar
+            </button>
+        </form>
+        <p class="mt-6 text-center">
+            <a href="index.html" class="text-blue-500 hover:text-blue-700 text-sm font-semibold">Volver al menú</a>
+        </p>
+    </div>
+</body>
+</html>
