@@ -1,4 +1,5 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
+from src.controller.liquidaciones_controller import LiquidacionesController  # Importa el controlador
 
 app = Flask(__name__)
 
@@ -6,8 +7,12 @@ app = Flask(__name__)
 def Inicio():
     return render_template("inicio.html")
 
-@app.route('/buscar')
+@app.route('/buscar', methods=['GET', 'POST'])
 def Buscar():
+    if request.method == 'POST':
+        id_busqueda = request.form['id_registro']
+        liquidacion = LiquidacionesController.buscar_por_id(id_busqueda)
+        return render_template("resultados_buscar.html", resultado=liquidacion)
     return render_template("buscar.html")
 
 @app.route('/insertar')
@@ -20,7 +25,7 @@ def Modificar():
 
 @app.route('/')
 def index():
-    return render_template("inicio.html") # O la página que quieras como principal
+    return render_template("inicio.html")
 
 if __name__ == '__main__':
     app.run(debug=True)

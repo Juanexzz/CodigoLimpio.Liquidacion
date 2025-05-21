@@ -6,7 +6,6 @@
     <title>Buscar Registro</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Estilos personalizados para la fuente Inter */
         body {
             font-family: 'Inter', sans-serif;
         }
@@ -15,7 +14,7 @@
 <body class="bg-gray-100 flex items-center justify-center min-h-screen">
     <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
         <h1 class="text-3xl font-bold mb-6 text-gray-800 text-center">Buscar Registro</h1>
-        <form action="/buscar" method="get" class="space-y-4">
+        <form action="/buscar" method="post" class="space-y-4">
             <div>
                 <label for="id_registro" class="block text-gray-700 text-sm font-bold mb-2">ID del Registro:</label>
                 <input type="text" id="id_registro" name="id_registro" placeholder="Ej: 12345" class="shadow appearance-none border rounded-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
@@ -25,7 +24,7 @@
             </button>
         </form>
         <p class="mt-6 text-center">
-            <a href="/" class="text-blue-500 hover:text-blue-700 text-sm font-semibold">Volver al menú</a>
+            <a href="/inicio" class="text-blue-500 hover:text-blue-700 text-sm font-semibold">Volver al menú</a>
         </p>
     </div>
 </body>
