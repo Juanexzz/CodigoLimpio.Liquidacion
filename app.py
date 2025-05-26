@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request
 import sys
 sys.path.append("src")
-from src.view.web import plano
+from view.web import plano
 
 
 app = Flask(__name__)
