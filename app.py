@@ -4,7 +4,7 @@ sys.path.append("src")
 from src.view.web import plano
 
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='src/view/web/templates')
 
 app.register_blueprint(plano.blueprint)
 

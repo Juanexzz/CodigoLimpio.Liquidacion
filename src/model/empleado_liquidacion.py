@@ -9,12 +9,12 @@ class EmpleadoLiquidacion:
 
     def __init__(self, salario_auxilio, salario_sin_auxilio, salario_variable,
                  fecha_inicio, fecha_fin, dias_suspension, dias_indemnizacion):
-        
+
         self.salario_auxilio = salario_auxilio
         self.salario_sin_auxilio = salario_sin_auxilio
         self.salario_variable = salario_variable
-        self.fecha_inicio = datetime.strptime(fecha_inicio, "%d/%m/%Y")
-        self.fecha_fin = datetime.strptime(fecha_fin, "%d/%m/%Y")
+        self.fecha_inicio = (fecha_inicio)
+        self.fecha_fin = (fecha_fin)
         self.dias_suspension = dias_suspension
         self.dias_indemnizacion = dias_indemnizacion
 

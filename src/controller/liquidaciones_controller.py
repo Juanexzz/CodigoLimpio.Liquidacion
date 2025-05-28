@@ -41,15 +41,14 @@ class LiquidacionesController:
         cursor = LiquidacionesController.obtener_cursor()
 
         with open(ruta_sql("insertar-liquidacion.sql"), "r") as archivo:
-
             consulta = archivo.read()
 
         datos = (
             liquidacion.salario_auxilio,
             liquidacion.salario_sin_auxilio,
             liquidacion.salario_variable,
-            liquidacion.fecha_inicio.date(),
-            liquidacion.fecha_fin.date(),
+            liquidacion.fecha_inicio,
+            liquidacion.fecha_fin,
             liquidacion.dias_suspension,
             liquidacion.dias_indemnizacion
         )
@@ -96,7 +95,6 @@ class LiquidacionesController:
         cursor.execute(consulta, (id_liquidacion,))
         cursor.connection.commit()
 
-
     @staticmethod
     def modificar_por_id(id_liquidacion: int, nueva: EmpleadoLiquidacion):
         """Modifica una fila existente dado su ID"""
@@ -112,20 +110,18 @@ class LiquidacionesController:
         if nueva.salario_auxilio < 0 or nueva.salario_sin_auxilio < 0 or nueva.salario_variable < 0:
             raise Exception("Los valores salariales no pueden ser negativos.")
 
-        if not nueva.fecha_inicio or not nueva.fecha_fin:
-            raise Exception("Las fechas de inicio y fin no pueden ser vacías.")
+        # No es necesario validar si las fechas son None aquí, ya que en plano.py lo manejamos
 
         # Leer y ejecutar la consulta SQL desde archivo
         with open(ruta_sql("modificar-liquidacion-por-id.sql"), "r") as archivo:
-
             consulta = archivo.read()
 
         datos = (
             nueva.salario_auxilio,
             nueva.salario_sin_auxilio,
             nueva.salario_variable,
-            nueva.fecha_inicio.date(),
-            nueva.fecha_fin.date(),
+            nueva.fecha_inicio,
+            nueva.fecha_fin,
             nueva.dias_suspension,
             nueva.dias_indemnizacion,
             id_liquidacion
@@ -133,7 +129,6 @@ class LiquidacionesController:
 
         cursor.execute(consulta, datos)
         cursor.connection.commit()
-
 
     @staticmethod
     def obtener_cursor():
