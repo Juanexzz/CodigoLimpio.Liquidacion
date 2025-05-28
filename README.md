@@ -54,6 +54,8 @@ Un sistema para calcular la liquidación laboral de empleados según la normativ
 Puedes usar la aplicación directamente desde la web sin necesidad de instalación:
 🔗 https://codigolimpio-liquidacion.onrender.com
 
+Cuando presiones Borrar Tabla de Liquidaciones, inmediatamente dale al boton Crear tabla de liquidaciones para evitar errores
+
 ---
 
 ## ⚙️ Configuración para funcionalidad SQL
