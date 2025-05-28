@@ -169,9 +169,14 @@ Estos pasos te guiarán para conectar la aplicación a una base de datos Postgre
     │   ├── console/
     │   │    └── main.py                Ejecutable de consola
     │   ├── gui/
-    │   │    └── kivy.py                (Vacío por ahora)
-    │   └── web/ 
-    │        └── app.py                 (Vacío por ahora)
+    │   │    └── Main_screen.py
+	│    └──Second_screen.py
+	│    └──kivy_liquidador.py
+        │    └──own_classes.py              
+    │   └── web/
+    │        └── templates
+    │        └── plano.py
+             └── requirements.txt          
     ├── controller/
     │   ├── __init__.py
     │   ├── liquidaciones_controller.py
@@ -179,6 +184,7 @@ Estos pasos te guiarán para conectar la aplicación a una base de datos Postgre
     │   ├── __init__.py
     │   ├── test.py                     Contiene pruebas del sistema
     │   └── test_sql.py                 Pruebas y creación de tablas SQL
+    ├── app.py  
     ├── README.md                       Este archivo
     ├── casos de prueba codigo_limpio1.0.xlsx   Casos de prueba
     ├── Experto.mp3                     Audio guía
