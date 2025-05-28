@@ -169,6 +169,15 @@ def Modificar():
 
     return render_template("modificar.html")
 
+@blueprint.route('/borrar_tabla')
+def BorrarTabla():
+    try:
+        LiquidacionesController.borrar_tabla()
+        return render_template("tabla_borrada.html", mensaje="La tabla de liquidaciones fue eliminada exitosamente.")
+    except Exception as e:
+        return render_template("error.html", error=f"Error al borrar la tabla: {str(e)}"), 500
+
+
 @blueprint.route('/')
 def index():
     return render_template("initio.html")
