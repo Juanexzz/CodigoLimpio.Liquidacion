@@ -13,8 +13,6 @@
 ---
 
 
----
-
 ## 👥 Colaboradores
 
 - Juan Esteban Vallejo Hincapie
