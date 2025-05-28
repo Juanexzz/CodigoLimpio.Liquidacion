@@ -173,7 +173,7 @@ def Modificar():
 def CrearTabla():
     try:
         LiquidacionesController.crear_tabla()
-        return render_template("tabla_creada.html", mensaje="La tabla de liquidaciones fue creada exitosamente.")
+        return render_template("initio.html", mensaje="La tabla de liquidaciones fue creada exitosamente.")
     except Exception as e:
         return render_template("error.html", error=f"Error al crear la tabla: {str(e)}"), 500
 
@@ -181,7 +181,7 @@ def CrearTabla():
 def BorrarTabla():
     try:
         LiquidacionesController.borrar_tabla()
-        return render_template("tabla_borrada.html", mensaje="La tabla de liquidaciones fue eliminada exitosamente.")
+        return render_template("initio.html", mensaje="La tabla de liquidaciones fue eliminada exitosamente.")
     except Exception as e:
         return render_template("error.html", error=f"Error al borrar la tabla: {str(e)}"), 500
 
