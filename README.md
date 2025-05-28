@@ -12,6 +12,17 @@
 
 ---
 
+
+---
+
+## 👥 Colaboradores
+
+- Juan Esteban Vallejo Hincapie
+- Santiago Restrepo Fonnegra
+
+---
+
+
 Un sistema para calcular la liquidación laboral de empleados según la normativa colombiana, incluyendo prestaciones sociales, indemnizaciones y otros conceptos.
 
 ## 🚀 Características
@@ -39,6 +50,10 @@ Un sistema para calcular la liquidación laboral de empleados según la normativ
    - Python 3.8+
 
 ---
+
+🌐 Acceso en Línea
+Puedes usar la aplicación directamente desde la web sin necesidad de instalación:
+🔗 https://codigolimpio-liquidacion.onrender.com
 
 ## ⚙️ Configuración para funcionalidad SQL
 
