@@ -1,9 +1,9 @@
 from flask import Blueprint, render_template, request, redirect, url_for
 import sys
 sys.path.append("src")
-from src.controller.liquidaciones_controller import LiquidacionesController
+from controller.liquidaciones_controller import LiquidacionesController
 from datetime import datetime
-from src.model.empleado_liquidacion import EmpleadoLiquidacion
+from model.empleado_liquidacion import EmpleadoLiquidacion
 
 blueprint = Blueprint("vista_usuarios", __name__, "templates")
 
