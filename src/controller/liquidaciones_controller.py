@@ -4,8 +4,8 @@ from pathlib import Path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))  
 
 import psycopg2
-from model.empleado_liquidacion import EmpleadoLiquidacion  
-import SecretConfig
+from src.model.empleado_liquidacion import EmpleadoLiquidacion
+from src import SecretConfig
 
 def ruta_sql(nombre_archivo):
     return os.path.abspath(os.path.join(os.path.dirname(__file__), "../../sql", nombre_archivo))

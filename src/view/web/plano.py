@@ -1,13 +1,13 @@
 from flask import Blueprint, render_template, request
 import sys
 sys.path.append("src")
-from controller.liquidaciones_controller import LiquidacionesController 
+from src.controller.liquidaciones_controller import LiquidacionesController
 
 blueprint = Blueprint("vista_usuarios", __name__, "templates")
 
 @blueprint.route('/inicio')
 def Inicio():
-    return render_template("inicio.html")
+    return render_template("initio.html")
 
 @blueprint.route('/buscar', methods=['GET', 'POST'])
 def Buscar():
@@ -27,7 +27,7 @@ def Modificar():
 
 @blueprint.route('/')
 def index():
-    return render_template("inicio.html")
+    return render_template("initio.html")
 
 @blueprint.errorhandler(Exception)
 def manejar_error(err):
